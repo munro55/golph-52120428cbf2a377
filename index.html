@@ -1,0 +1,238 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Golph Enchants</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito:wght@700;800&display=swap');
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 28px 20px 60px;
+    background: #6cc04a;
+    background-image: radial-gradient(rgba(255,255,255,.13) 3px, transparent 4px);
+    background-size: 22px 22px;
+    font-family: 'Nunito', sans-serif; color: #1b1b1b;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; }
+  h1, h2, h3, .tag, .tier {
+    font-family: 'Luckiest Guy', cursive; letter-spacing: .5px; color: #fff;
+    -webkit-text-stroke: 2px #000; paint-order: stroke fill;
+  }
+  h1 { font-size: 54px; margin: 0 0 4px; text-align: center; -webkit-text-stroke: 3px #000; }
+  .sub { text-align: center; font-family: 'Luckiest Guy'; color: #fff; -webkit-text-stroke: 1.5px #000; paint-order: stroke fill; font-size: 20px; margin-bottom: 18px; }
+  .board { background: #fff8e6; border: 5px solid #000; border-radius: 22px; box-shadow: 0 7px 0 #000; padding: 18px 20px 20px; margin: 44px 0 30px; }
+  .board.mine { background: #e9eef5; }
+  .board > h2 { margin: -40px 0 12px; display: inline-block; padding: 6px 22px; border: 5px solid #000; border-radius: 16px; font-size: 30px; box-shadow: 0 5px 0 #000; }
+  .mine > h2 { background: #7d8fa8; }
+  .new > h2 { background: #ff9f1c; }
+  .notes > h2 { background: #4aa3ff; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 820px) { .cols { grid-template-columns: 1fr; } }
+  h3 { font-size: 24px; margin: 6px 0 10px; }
+  h3.club { color: #ffd54a; }
+  h3.animal { color: #8ff07a; }
+  .group { margin-bottom: 14px; }
+  .tag { display: inline-block; font-size: 15px; padding: 3px 12px 1px; border: 3px solid #000; border-radius: 10px; margin: 2px 0 8px; }
+  .good .tag { background: #2fbf4a; }
+  .bad .tag { background: #ff4d4d; }
+  .maybe .tag { background: #b07cff; }
+  .card { display: flex; gap: 10px; align-items: flex-start; background: #fff; border: 3px solid #000; border-radius: 12px; padding: 8px 10px; margin-bottom: 7px; box-shadow: 0 3px 0 #000; }
+  .good .card { border-left: 10px solid #2fbf4a; }
+  .bad .card { border-left: 10px solid #ff4d4d; }
+  .maybe .card { border-left: 10px solid #b07cff; }
+  .name { font-family: 'Luckiest Guy'; font-size: 18px; color: #fff; -webkit-text-stroke: 1.5px #000; paint-order: stroke fill; width: 170px; flex-shrink: 0; padding-top: 2px; }
+  .tier { font-size: 13px; color: #ffe066; -webkit-text-stroke: 1px #000; display: block; }
+  .desc { font-weight: 700; font-size: 15px; line-height: 1.3; }
+  .why { display: block; font-weight: 800; font-size: 13px; color: #6a5a2a; margin-top: 2px; }
+  .mine .card { box-shadow: none; padding: 6px 10px; }
+  .src { font-family: 'Luckiest Guy'; font-size: 11px; color: #fff; background: #7d8fa8; border: 2px solid #000; border-radius: 6px; padding: 1px 6px 0; margin-left: 6px; -webkit-text-stroke: 0; vertical-align: 2px; }
+  .note { background: #fff; border: 3px solid #000; border-radius: 12px; padding: 9px 12px; margin-bottom: 8px; font-weight: 700; font-size: 15px; }
+  .note b { font-family: 'Luckiest Guy'; font-weight: normal; font-size: 17px; letter-spacing: .4px; }
+  .new .card { cursor: pointer; transition: transform .08s; }
+  .new .card:hover { transform: scale(1.02); }
+  .new .card.picked { background: #c9ffb8; box-shadow: 0 3px 0 #000, 0 0 0 4px #39e639, 0 0 18px 6px rgba(57,230,57,.75); }
+  .new .card.picked .name::after { content: " ✔"; color: #39e639; }
+  .pickbar { position: sticky; top: 10px; z-index: 5; display: flex; gap: 10px; justify-content: center; align-items: center; margin: 0 auto; width: fit-content; background: #fff; border: 4px solid #000; border-radius: 16px; padding: 8px 14px; box-shadow: 0 5px 0 #000; font-family: 'Luckiest Guy'; font-size: 18px; }
+  .pickbar button { font-family: 'Luckiest Guy'; font-size: 16px; color: #fff; -webkit-text-stroke: 1px #000; paint-order: stroke fill; border: 3px solid #000; border-radius: 10px; padding: 6px 12px 3px; cursor: pointer; box-shadow: 0 3px 0 #000; }
+  .pickbar .copy { background: #2fbf4a; }
+  .pickbar .clear { background: #ff4d4d; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>GOLPH ENCHANTS</h1>
+  <div class="sub">Round 2. The agreed list is on top. Click the new ideas you like!</div>
+  <div class="pickbar"><span id="count">0 PICKED</span><button class="copy" id="copy">COPY MY PICKS</button><button class="clear" id="clear">CLEAR</button></div>
+
+  <!-- ===================== AGREED LIST ===================== -->
+  <div class="board mine">
+    <h2>AGREED LIST</h2>
+    <div class="cols">
+      <div>
+        <h3 class="club">Golph Club</h3>
+        <div class="group good"><span class="tag">GOOD</span>
+          <div class="card"><div class="name">Split Shot<span class="tier">I / II</span></div><div class="desc">Adds 1 or 2 balls to your shot randomly in the zone</div></div>
+          <div class="card"><div class="name">Swift Shot<span class="tier">I / II / III</span></div><div class="desc">10% / 15% / 20% faster shooting</div></div>
+          <div class="card"><div class="name">Precision<span class="tier">I / II / III</span></div><div class="desc">10% / 15% / 20% increased accuracy</div></div>
+          <div class="card"><div class="name">Hawk Eye</div><div class="desc">30% better accuracy</div></div>
+          <div class="card"><div class="name">Piercing</div><div class="desc">2x damage to shield</div></div>
+          <div class="card"><div class="name">Weighted Ball<span class="tier">I / II / III</span></div><div class="desc">10% / 15% / 20% more damage to animals</div></div>
+          <div class="card"><div class="name">Rocket Ball</div><div class="desc">30% more damage to animals</div></div>
+          <div class="card"><div class="name">Critical Swing<span class="tier">I / II / III</span></div><div class="desc">5% / 10% / 15% chance a shot does 3x damage <span class="src">R1</span></div></div>
+          <div class="card"><div class="name">Explosive Ball<span class="tier">I / II</span></div><div class="desc">Also hits other eggs within 6 / 10 studs for 50% damage <span class="src">R1</span></div></div>
+          <div class="card"><div class="name">Lucky Strike<span class="tier">I / II / III</span></div><div class="desc">3% / 6% / 10% chance the hatched animal is one rarity higher <span class="src">R1</span></div></div>
+          <div class="card"><div class="name">Heavy Haul<span class="tier">I / II / III</span></div><div class="desc">Animals you hatch are 10% / 20% / 30% heavier <span class="src">R1</span></div></div>
+          <div class="card"><div class="name">Long Drive<span class="tier">I / II</span></div><div class="desc">+1 / +2 zones of range <span class="src">R1</span></div></div>
+          <div class="card"><div class="name">Giant Slayer</div><div class="desc">+50% damage to Huge and Massive eggs <span class="src">R1</span></div></div>
+          <div class="card"><div class="name">Stun Lock<span class="tier">I / II</span></div><div class="desc">Players you hit stay stunned 1 / 2 seconds longer <span class="src">R1</span></div></div>
+          <div class="card"><div class="name">Ricochet</div><div class="desc">After a hit, the ball bounces to the nearest other egg for 50% damage <span class="src">R1</span></div></div>
+          <div class="card"><div class="name">Finisher</div><div class="desc">2x damage to eggs under 25% health <span class="src">R1</span></div></div>
+          <div class="card"><div class="name">Double Tap<span class="tier">I / II</span></div><div class="desc">10% / 20% chance a shot needs no reload <span class="src">R1</span></div></div>
+        </div>
+        <div class="group bad"><span class="tag">BAD</span>
+          <div class="card"><div class="name">Slowness<span class="tier">I / II / III</span></div><div class="desc">10% / 15% / 20% slower shooting</div></div>
+          <div class="card"><div class="name">Clumsy<span class="tier">I / II / III</span></div><div class="desc">10% / 15% / 20% decreased accuracy</div></div>
+          <div class="card"><div class="name">Mole Vision</div><div class="desc">30% worse accuracy</div></div>
+          <div class="card"><div class="name">Light Ball<span class="tier">I / II / III</span></div><div class="desc">10% / 15% / 20% less damage to animals</div></div>
+          <div class="card"><div class="name">Feather Ball</div><div class="desc">30% less damage to animals</div></div>
+          <div class="card"><div class="name">Slice<span class="tier">I / II / III</span></div><div class="desc">The ball drifts 2 / 4 / 6 studs to one side <span class="src">R1</span></div></div>
+          <div class="card"><div class="name">Short Drive<span class="tier">I / II</span></div><div class="desc">-1 / -2 zones of range <span class="src">R1</span></div></div>
+          <div class="card"><div class="name">Unlucky</div><div class="desc">5% chance the hatched animal is one rarity lower <span class="src">R1</span></div></div>
+          <div class="card"><div class="name">Rusty<span class="tier">I / II / III</span></div><div class="desc">Animals you hatch are 10% / 20% / 30% lighter <span class="src">R1</span></div></div>
+          <div class="card"><div class="name">Backfire</div><div class="desc">3% chance a shot stuns YOU for 2 seconds <span class="src">R1</span></div></div>
+          <div class="card"><div class="name">Glass Ball</div><div class="desc">0.5x damage to shields <span class="src">R1</span></div></div>
+          <div class="card"><div class="name">Whiff</div><div class="desc">5% chance a shot misses completely <span class="src">R1</span></div></div>
+        </div>
+      </div>
+      <div>
+        <h3 class="animal">Animal</h3>
+        <div class="group good"><span class="tag">GOOD</span>
+          <div class="card"><div class="name">Growth Spurt<span class="tier">I / II / III</span></div><div class="desc">2x / 4x / 8x bigger, more income from KG (fine if it pokes out of the plot)</div></div>
+          <div class="card"><div class="name">Money Hungry<span class="tier">I / II</span></div><div class="desc">2x / 4x money</div></div>
+          <div class="card"><div class="name">Speed<span class="tier">I / II / III</span></div><div class="desc">1.5x / 2x / 2.5x walk speed</div></div>
+          <div class="card"><div class="name">Team Player<span class="tier">I / II</span></div><div class="desc">+5% / +10% income to every other animal on your plot <span class="src">R1</span></div></div>
+          <div class="card"><div class="name">Night Owl<span class="tier">I / II</span></div><div class="desc">2x / 3x income while you're offline <span class="src">R1</span></div></div>
+          <div class="card"><div class="name">Jackpot</div><div class="desc">Every 5 minutes, 10% chance to pay out 10 minutes of its income at once <span class="src">R1</span></div></div>
+          <div class="card"><div class="name">Gold Rush</div><div class="desc">Each income tick has a 1 in 1000 chance to pay 100x <span class="src">R1</span></div></div>
+        </div>
+        <div class="group bad"><span class="tag">BAD</span>
+          <div class="card"><div class="name">Shrink<span class="tier">I / II / III</span></div><div class="desc">2x / 4x / 8x smaller, less income from KG</div></div>
+          <div class="card"><div class="name">Money Starved<span class="tier">I / II</span></div><div class="desc">0.5x / 0.25x money</div></div>
+          <div class="card"><div class="name">Slowness<span class="tier">I / II / III</span></div><div class="desc">1.5x / 2x / 2.5x slower walk speed</div></div>
+          <div class="card"><div class="name">Clean Slate</div><div class="desc">Removes 1 modifier (mutation) until the enchant is removed</div></div>
+          <div class="card"><div class="name">Lazy</div><div class="desc">Earns nothing for 1 minute out of every 5 <span class="src">R1</span></div></div>
+          <div class="card"><div class="name">Grumpy</div><div class="desc">-5% income to every other animal on your plot <span class="src">R1</span></div></div>
+          <div class="card"><div class="name">Couch Potato</div><div class="desc">0.5x offline income <span class="src">R1</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== ROUND 2 IDEAS ===================== -->
+  <div class="board new">
+    <h2>NEW IDEAS: ROUND 2</h2>
+    <div class="cols">
+      <div>
+        <h3 class="club">Golph Club</h3>
+        <div class="group good"><span class="tag">GOOD</span>
+          <div class="card"><div class="name">Bullseye</div><div class="desc">+50% damage when the ball lands right in the middle of your aim circle</div></div>
+          <div class="card"><div class="name">Momentum<span class="tier">I / II</span></div><div class="desc">Each hit in a row on the same egg does +5% / +10% more damage (stacks up to 5)</div></div>
+          <div class="card"><div class="name">Sniper</div><div class="desc">+25% damage when shooting into your farthest zone</div></div>
+          <div class="card"><div class="name">Short Game</div><div class="desc">+25% damage in your 5 closest zones</div></div>
+          <div class="card"><div class="name">Twin Swing</div><div class="desc">10% chance the same shot fires twice</div></div>
+          <div class="card"><div class="name">Overcharge</div><div class="desc">Every 5th shot does 2x damage</div></div>
+          <div class="card"><div class="name">Shockwave</div><div class="desc">Players near where your ball lands get stunned for 1 second</div></div>
+          <div class="card"><div class="name">Pickpocket</div><div class="desc">Hitting a player who's carrying knocks off 1 extra animal</div></div>
+          <div class="card"><div class="name">Scavenger<span class="tier">I / II</span></div><div class="desc">Every egg hit also gives you a little cash (1% / 2% of that egg's animal value)</div></div>
+          <div class="card"><div class="name">Golden Touch</div><div class="desc">1% chance the hatched animal gets a random mutation</div></div>
+          <div class="card"><div class="name">Featherweight</div><div class="desc">+10% walk speed while holding this club</div></div>
+          <div class="card"><div class="name">Bargain</div><div class="desc">Upgrades for this club cost 10% less</div></div>
+        </div>
+        <div class="group bad"><span class="tag">BAD</span>
+          <div class="card"><div class="name">Shank</div><div class="desc">10% chance the ball lands somewhere random in the zone</div></div>
+          <div class="card"><div class="name">Jammed<span class="tier">I / II</span></div><div class="desc">5% / 10% chance the shot doesn't fire but still uses your reload</div></div>
+          <div class="card"><div class="name">Butterfingers</div><div class="desc">5% chance you drop the club after a shot and have to re-equip it</div></div>
+          <div class="card"><div class="name">Wobbly</div><div class="desc">Your crosshair slowly drifts around while you aim</div></div>
+          <div class="card"><div class="name">Fumble</div><div class="desc">5% chance a hit heals the egg instead of hurting it</div></div>
+          <div class="card"><div class="name">Short Fuse</div><div class="desc">Reload is 1 second longer after a miss</div></div>
+          <div class="card"><div class="name">Heavy Club</div><div class="desc">-10% walk speed while holding this club</div></div>
+          <div class="card"><div class="name">Glass Jaw</div><div class="desc">Other players' shots stun you 1 second longer</div></div>
+          <div class="card"><div class="name">Pricey</div><div class="desc">Upgrades for this club cost 10% more</div></div>
+          <div class="card"><div class="name">Jinxed</div><div class="desc">2% chance the hatched animal is Common no matter the egg</div></div>
+          <div class="card"><div class="name">Blindfold</div><div class="desc">You can't see egg health bars</div></div>
+          <div class="card"><div class="name">Rust Bucket</div><div class="desc">-10% Money multiplier while this club is equipped</div></div>
+        </div>
+      </div>
+      <div>
+        <h3 class="animal">Animal</h3>
+        <div class="group good"><span class="tag">GOOD</span>
+          <div class="card"><div class="name">Lucky Charm</div><div class="desc">+5% hatch luck for you while it's on your plot</div></div>
+          <div class="card"><div class="name">Golden Hour</div><div class="desc">2x income for 1 minute out of every 10</div></div>
+          <div class="card"><div class="name">Guardian</div><div class="desc">Your shield refills faster while it's on your plot</div></div>
+          <div class="card"><div class="name">Coin Shower</div><div class="desc">Drops a coin on your plot every 2 minutes. Walk over it for 30 seconds of its income</div></div>
+          <div class="card"><div class="name">Early Bird</div><div class="desc">3x income for the first 5 minutes after you join</div></div>
+          <div class="card"><div class="name">Fresh Start</div><div class="desc">2x income for 10 minutes after you rebirth</div></div>
+          <div class="card"><div class="name">Cheerleader</div><div class="desc">+1 walk speed for you while it's on your plot</div></div>
+          <div class="card"><div class="name">Snooze Buddy</div><div class="desc">Your offline earnings last 2 hours longer</div></div>
+          <div class="card"><div class="name">Veteran</div><div class="desc">+2% income for every rebirth you have</div></div>
+          <div class="card"><div class="name">Best Friend</div><div class="desc">2x income while you're standing on your plot</div></div>
+        </div>
+        <div class="group maybe"><span class="tag">MIXED</span>
+          <div class="card"><div class="name">Wildcard</div><div class="desc">Income changes to a random 0.5x to 2x every 5 minutes</div></div>
+          <div class="card"><div class="name">Glass Cannon</div><div class="desc">3x income, but loses the enchant if you rebirth</div></div>
+        </div>
+        <div class="group bad"><span class="tag">BAD</span>
+          <div class="card"><div class="name">Homesick</div><div class="desc">Earns 50% while you're away from your plot</div></div>
+          <div class="card"><div class="name">Sleepy</div><div class="desc">0.5x income while you're online</div></div>
+          <div class="card"><div class="name">Late Bloomer</div><div class="desc">Earns nothing for its first 10 minutes after being placed</div></div>
+          <div class="card"><div class="name">Jinx</div><div class="desc">-5% hatch luck for you while it's on your plot</div></div>
+          <div class="card"><div class="name">Hermit</div><div class="desc">-1% income for every other animal on your plot</div></div>
+          <div class="card"><div class="name">Rival</div><div class="desc">-10% income for each other animal of the same rarity on your plot</div></div>
+          <div class="card"><div class="name">Rebirth Blues</div><div class="desc">Earns nothing for 10 minutes after you rebirth</div></div>
+          <div class="card"><div class="name">Clingy</div><div class="desc">Can't be sold</div></div>
+          <div class="card"><div class="name">Escape Artist</div><div class="desc">Sometimes wanders back into your inventory and has to be placed again</div></div>
+          <div class="card"><div class="name">Noisy</div><div class="desc">Squeaks loudly every few seconds (just annoying)</div></div>
+          <div class="card"><div class="name">Weakling</div><div class="desc">Your shield refills slower while it's on your plot</div></div>
+          <div class="card"><div class="name">Night Terror</div><div class="desc">Earns nothing while you're offline</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="board notes">
+    <h2>NOTES</h2>
+    <div class="note"><b>Left out on purpose:</b> anything about carry slots, dropping when knocked off, or hatching from eggs for animal enchants. You enchant animals you already own, so those would never matter.</div>
+    <div class="note"><b>Golden Touch:</b> needs the mutations list, which isn't decided yet.</div>
+    <div class="note"><b>Answered:</b> Growth Spurt can poke out of the plot, Clean Slate removes a mutation, and Money Starved is 0.5x / 0.25x.</div>
+  </div>
+</div>
+<script>
+  const KEY = 'golphEnchantPicksR2';
+  const cards = [...document.querySelectorAll('.new .card')];
+  const nameOf = c => c.querySelector('.name').firstChild.textContent.trim();
+  const groupOf = c => c.closest('.cols > div').querySelector('h3').textContent.trim();
+  let picks = new Set(JSON.parse(localStorage.getItem(KEY) || '[]'));
+  function refresh() {
+    cards.forEach(c => c.classList.toggle('picked', picks.has(groupOf(c) + ': ' + nameOf(c))));
+    document.getElementById('count').textContent = picks.size + ' PICKED';
+    localStorage.setItem(KEY, JSON.stringify([...picks]));
+  }
+  cards.forEach(c => c.addEventListener('click', () => {
+    const k = groupOf(c) + ': ' + nameOf(c);
+    picks.has(k) ? picks.delete(k) : picks.add(k);
+    refresh();
+  }));
+  document.getElementById('clear').onclick = () => { picks.clear(); refresh(); };
+  document.getElementById('copy').onclick = async () => {
+    const text = 'My enchant picks (round 2):\n' + [...picks].sort().join('\n');
+    try { await navigator.clipboard.writeText(text); } catch (e) {
+      const t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove();
+    }
+    const b = document.getElementById('copy'); b.textContent = 'COPIED!'; setTimeout(() => b.textContent = 'COPY MY PICKS', 1200);
+  };
+  refresh();
+</script>
+</body>
+</html>
