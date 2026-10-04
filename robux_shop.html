@@ -4,188 +4,223 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Golph Robux Shop draft</title>
+<title>Golph Shop draft v2</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
   * { box-sizing: border-box; }
-  body { margin: 0; background: #6cc04a; background-image: radial-gradient(rgba(255,255,255,.13) 3px, transparent 4px); background-size: 22px 22px; font-family: 'Luckiest Guy'; color: #fff; letter-spacing: .4px; }
-  .ol { -webkit-text-stroke: 3px #000; paint-order: stroke fill; }
+  body { margin: 0; background: #2a9a3a; background-image: radial-gradient(rgba(255,255,255,.12) 3px, transparent 4px); background-size: 22px 22px; font-family: 'Luckiest Guy'; color: #fff; letter-spacing: .4px; }
+  .ol { -webkit-text-stroke: 4px #000; paint-order: stroke fill; }
+  .ol3 { -webkit-text-stroke: 3px #000; paint-order: stroke fill; }
   .ol2 { -webkit-text-stroke: 2px #000; paint-order: stroke fill; }
-  .ol1 { -webkit-text-stroke: 1.4px #000; paint-order: stroke fill; }
-  h1 { text-align: center; font-size: 46px; margin: 22px 0 4px; }
-  .sub { text-align: center; font-size: 17px; margin: 0 0 54px; }
-  .studs { background-image: radial-gradient(circle at 50% 45%, rgba(255,255,255,.24) 0 22%, rgba(0,0,0,.13) 23% 30%, transparent 31%); background-size: 22px 22px; }
-  .shine { position: relative; overflow: hidden; }
-  .shine::before { content: ""; position: absolute; left: 4px; right: 4px; top: 4px; height: 42%; background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0)); pointer-events: none; }
+  .studs { background-image: radial-gradient(circle at 50% 45%, rgba(255,255,255,.22) 0 22%, rgba(0,0,0,.12) 23% 30%, transparent 31%); background-size: 22px 22px; }
+  .gloss { position: relative; overflow: hidden; }
+  .gloss::after { content: ""; position: absolute; left: 5px; right: 5px; top: 4px; height: 42%; background: linear-gradient(rgba(255,255,255,.55), rgba(255,255,255,0)); pointer-events: none; }
 
-  .w { position: relative; width: 1060px; margin: 0 auto 70px; border: 6px solid #000; padding: 54px 18px 18px; box-shadow: 0 10px 0 #000, inset 0 6px 0 rgba(255,255,255,.3); background-color: #ff3b6b; }
-  .hdr { position: absolute; z-index: 2; left: -22px; top: -40px; height: 74px; border: 6px solid #000; display: flex; align-items: center; padding: 6px 28px 0 20px; box-shadow: 0 6px 0 #000, inset 0 6px 0 rgba(255,255,255,.45); font-size: 40px; background: linear-gradient(#fff06a, #ffb300); }
-  .x { position: absolute; z-index: 3; right: 12px; top: -28px; width: 56px; height: 56px; background: linear-gradient(#ff6a6a, #ff1f1f); border: 5px solid #000; box-shadow: 0 5px 0 #000; font-size: 28px; text-align: center; line-height: 54px; }
-  .robux { position: absolute; z-index: 3; top: -24px; right: 84px; border: 5px solid #000; padding: 8px 14px 2px; font-size: 20px; box-shadow: 0 4px 0 #000; background: linear-gradient(#5cf5d8, #0bb59a); }
+  .win { width: 1100px; margin: 30px auto 50px; border: 7px solid #000; box-shadow: 0 12px 0 #000; position: relative; }
+  /* yellow header bar */
+  .top { position: relative; height: 128px; display: flex; align-items: center; gap: 22px; padding: 0 22px; border-bottom: 7px solid #000;
+         background: linear-gradient(#fff36b, #ffd21a 60%, #ffb800); }
+  .top .cart { font-size: 84px; filter: drop-shadow(0 4px 0 #000); }
+  .top h1 { margin: 6px 0 0; font-size: 82px; line-height: 1; }
+  .top .x { margin-left: auto; width: 104px; height: 104px; border: 6px solid #000; background: linear-gradient(#ff6b6b, #e31b1b); box-shadow: 0 6px 0 #000;
+            display: flex; align-items: center; justify-content: center; font-size: 82px; padding-top: 10px; }
 
-  .inner { background: linear-gradient(#ffd0de, #ff8fb0); border: 5px solid #000; padding: 16px; }
-  .tabs { display: flex; gap: 10px; margin-bottom: 14px; }
-  .tab { border: 4px solid #000; padding: 8px 16px 3px; font-size: 18px; box-shadow: 0 4px 0 #000; background: linear-gradient(#b9c2d4, #7d8aa6); }
-  .tab.on { background: linear-gradient(#fff06a, #ffb300); }
+  /* sunburst body */
+  .body { padding: 26px 26px 34px; background:
+            radial-gradient(circle at 50% 30%, rgba(255,255,255,.25), transparent 60%),
+            repeating-conic-gradient(from 0deg at 50% 30%, #ff3d8b 0 7.5deg, #ff6aa8 7.5deg 15deg); }
 
-  .hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; margin-bottom: 14px; }
-  .card { position: relative; border: 5px solid #000; box-shadow: 0 6px 0 #000; padding: 14px; display: flex; flex-direction: column; align-items: center; text-align: center; }
-  .pic { width: 100%; border: 4px solid #000; background: radial-gradient(#fff 30%, rgba(255,255,255,.55)); display: flex; align-items: center; justify-content: center; font-size: 64px; margin-bottom: 10px; }
-  .name { font-size: 24px; margin-bottom: 4px; }
-  .desc { font-size: 14px; margin-bottom: 12px; min-height: 34px; }
-  .price { margin-top: auto; width: 100%; border: 4px solid #000; box-shadow: 0 4px 0 #000; padding: 10px 0 5px; font-size: 22px; background: linear-gradient(#a6ff5a, #29c21a); }
-  .tag { position: absolute; z-index: 2; top: -16px; right: -12px; border: 4px solid #000; padding: 6px 10px 2px; font-size: 15px; box-shadow: 0 3px 0 #000; transform: rotate(6deg); background: linear-gradient(#ff7ad0, #e0158a); }
-  .tag.gold { background: linear-gradient(#fff06a, #ffb300); }
-  .card.shine { overflow: visible; }
+  .divider { display: flex; align-items: center; gap: 18px; margin: 26px 10px 16px; font-size: 46px; }
+  .divider::before, .divider::after { content: ""; flex: 1; height: 8px; background: #fff; border: 3px solid #000; }
+  .divider:first-child { margin-top: 4px; }
 
-  .big { background: linear-gradient(#c27aff, #7a1fe0); flex-direction: row; text-align: left; gap: 16px; }
-  .big .pic { width: 190px; height: 190px; flex: none; margin: 0; font-size: 96px; }
-  .big .col { display: flex; flex-direction: column; height: 100%; flex: 1; }
-  .big .name { font-size: 32px; }
-  .big ul { margin: 0 0 12px; padding-left: 20px; font-size: 16px; line-height: 1.5; }
-  .strike { font-size: 16px; opacity: .85; text-decoration: line-through; margin-left: 8px; }
+  /* robux hexagon icon */
+  .rbx { width: 44px; height: 44px; flex: none; }
 
-  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 14px; }
-  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-  .cash { background: linear-gradient(#a6ff5a, #29c21a); }
-  .cash .price { background: linear-gradient(#5cf5d8, #0bb59a); }
-  .pass { background: linear-gradient(#5cc8ff, #1e7bff); }
-  .ench { background: linear-gradient(#c27aff, #8a2be2); }
-  .gold { background: linear-gradient(#fff06a, #ffb300); }
-  .pic.h110 { height: 110px; }
-  .pic.h90 { height: 90px; font-size: 52px; }
-  .sect { font-size: 26px; margin: 4px 0 10px; }
-  .owned { background: linear-gradient(#b9c2d4, #7d8aa6) !important; }
+  .btns { display: flex; gap: 10px; align-items: stretch; }
+  .price { flex: 1; border: 5px solid #000; box-shadow: 0 5px 0 #000; background: linear-gradient(#8dff4a, #22c414); display: flex; align-items: center; justify-content: center; gap: 10px; padding: 10px 12px 4px; min-height: 72px; position: relative; }
+  .price .num { font-size: 44px; line-height: 1; }
+  .price .sub { position: absolute; bottom: -2px; left: 0; right: 0; text-align: center; font-size: 26px; }
+  .price.two { flex-direction: column; gap: 0; padding-bottom: 26px; }
+  .price .row { display: flex; align-items: center; gap: 8px; }
+  .old { position: absolute; z-index: 4; top: -34px; left: 0; right: 0; text-align: center; font-size: 26px; line-height: 1; }
+  .old span { position: relative; }
+  .old span::after { content: ""; position: absolute; left: -6px; right: -6px; top: 45%; height: 3px; background: #ff2b2b; border: 1px solid #000; transform: rotate(-10deg); }
+  .gift { width: 78px; flex: none; border: 5px solid #000; box-shadow: 0 5px 0 #000; background: linear-gradient(#ff5cf0, #c512c0); display: flex; align-items: center; justify-content: center; font-size: 42px; }
 
-  .notes { max-width: 1060px; margin: 0 auto 60px; background: #fff8e6; border: 5px solid #000; box-shadow: 0 7px 0 #000; padding: 16px 22px; color: #1b1b1b; font-family: sans-serif; font-weight: 700; font-size: 15px; line-height: 1.55; }
+  /* egg packs strip */
+  .packs { border: 6px solid #000; box-shadow: 0 7px 0 #000; padding: 40px 16px 18px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+           background: linear-gradient(#ff8a1f, #e5390b); position: relative; }
+  .packs .ttl { position: absolute; top: -26px; left: 16px; border: 5px solid #000; padding: 8px 16px 2px; font-size: 30px; box-shadow: 0 4px 0 #000; background: linear-gradient(#b46bff, #7116e0); }
+
+  /* starter pack */
+  .starter { border: 6px solid #000; box-shadow: 0 7px 0 #000; overflow: hidden;
+             background: repeating-conic-gradient(from 0deg at 70% 55%, #ffd23a 0 8deg, #ffb31a 8deg 16deg); }
+  .starter .bar { background: linear-gradient(#ffb547, #f07a0d); border-bottom: 6px solid #000; padding: 12px 18px 4px; font-size: 44px; }
+  .starter .in { display: flex; align-items: center; gap: 22px; padding: 22px; }
+  .tile { width: 170px; height: 170px; flex: none; border: 6px solid transparent; position: relative; display: flex; align-items: center; justify-content: center; font-size: 86px;
+          background: linear-gradient(#5b5a2f, #3d3c1c) padding-box, linear-gradient(135deg, #ff4d4d, #ffd84d, #4dff7a, #4dc3ff, #c44dff, #ff4d4d) border-box;
+          box-shadow: 0 6px 0 #000, inset 0 0 0 3px #000; }
+  .tile .q { position: absolute; right: 8px; bottom: 2px; font-size: 40px; }
+  .starter .buy { margin-left: auto; width: 250px; display: flex; flex-direction: column; gap: 12px; }
+  .starter .buy .gift { width: auto; height: 84px; }
+
+  /* passes */
+  .passes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .pass { border: 6px solid #000; box-shadow: 0 7px 0 #000; overflow: hidden; display: flex; flex-direction: column; }
+  .pass .bar { border-bottom: 6px solid #000; padding: 12px 18px 4px; font-size: 40px; }
+  .pass .in { display: flex; align-items: center; gap: 18px; padding: 18px; flex: 1; }
+  .pass .pic { width: 140px; height: 140px; flex: none; border: 5px solid #000; display: flex; align-items: center; justify-content: center; font-size: 78px;
+               background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,.55) 0 10deg, rgba(255,255,255,.15) 10deg 20deg), radial-gradient(#fff, #ffe680); }
+  .pass .col { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+  .pass .desc { font-size: 22px; line-height: 1.15; }
+  .blue .bar { background: linear-gradient(#6fb6ff, #2b6dff); } .blue { background: linear-gradient(#bfe0ff, #7fb5ff); }
+  .purp .bar { background: linear-gradient(#c58bff, #8a2be2); } .purp { background: linear-gradient(#e7cfff, #b98aff); }
+  .grn .bar { background: linear-gradient(#8dff4a, #22c414); } .grn { background: linear-gradient(#d4ffb8, #8fe66a); }
+  .org .bar { background: linear-gradient(#ffb547, #f07a0d); } .org { background: linear-gradient(#ffe0a8, #ffb35c); }
+  .pink .bar { background: linear-gradient(#ff8ad8, #e0158a); } .pink { background: linear-gradient(#ffd4f0, #ff9ad6); }
+  .teal .bar { background: linear-gradient(#5cf5d8, #0bb59a); } .teal { background: linear-gradient(#c8fff3, #7eecd6); }
+  .red .bar { background: linear-gradient(#ff6b6b, #e31b1b); } .red { background: linear-gradient(#ffd0d0, #ff9090); }
+  .owned { background: linear-gradient(#c9cfdb, #8a93a8) !important; }
+  .hot { position: absolute; top: 10px; right: 12px; border: 4px solid #000; padding: 6px 10px 1px; font-size: 22px; box-shadow: 0 3px 0 #000; background: linear-gradient(#fff36b, #ffb800); transform: rotate(5deg); }
+  .pass { position: relative; overflow: visible; }
+  .hot { z-index: 3; top: -18px; right: -10px; }
+  .price.gloss { overflow: visible; }
+  .packs { padding-top: 64px; }
+  .starter .buy .price { margin-top: 34px; }
+
+  /* cash */
+  .cash { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .cashc { border: 6px solid #000; box-shadow: 0 7px 0 #000; background: linear-gradient(#5cf58a, #12a83c); padding: 16px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .cashc .tile { width: 100%; height: 150px; }
+  .cashc .amt { font-size: 32px; }
+  .cashc .btns { width: 100%; }
+
+  .notes { max-width: 1100px; margin: 0 auto 60px; background: #fff8e6; border: 5px solid #000; box-shadow: 0 7px 0 #000; padding: 16px 22px; color: #1b1b1b; font-family: sans-serif; font-weight: 700; font-size: 15px; line-height: 1.55; }
   .notes b { font-family: 'Luckiest Guy'; font-weight: normal; font-size: 17px; }
 </style>
 </head>
 <body>
-<h1 class="ol">GOLPH ROBUX SHOP</h1>
-<div class="sub ol2">Draft. Square, studded, glossy, like the other menus. Emojis stand in for real icons.</div>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="rbx" viewBox="0 0 100 100">
+      <polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="#fff" stroke="#000" stroke-width="7"/>
+      <polygon points="50,22 74,36 74,64 50,78 26,64 26,36" fill="#2b2b2b" stroke="#000" stroke-width="4"/>
+      <rect x="40" y="40" width="20" height="20" fill="#fff" stroke="#000" stroke-width="4"/>
+    </symbol>
+  </defs>
+</svg>
 
-<div class="w studs">
-  <div class="hdr ol">SHOP</div>
-  <div class="robux ol2">R$ PRICES</div>
-  <div class="x ol2">X</div>
-  <div class="inner">
-    <div class="tabs">
-      <span class="tab on ol1">FEATURED</span>
-      <span class="tab ol1">CASH</span>
-      <span class="tab ol1">PASSES</span>
-      <span class="tab ol1">ENCHANTS</span>
+<div class="win">
+  <div class="top gloss">
+    <div class="cart">🛒</div>
+    <h1 class="ol">Golph Shop</h1>
+    <div class="x ol3">✖</div>
+  </div>
+
+  <div class="body">
+    <div class="divider ol3">Lucky Eggs</div>
+    <div class="packs studs">
+      <div class="ttl ol2">MYTHIC EGG</div>
+      <div class="btns">
+        <div class="price gloss two"><div class="row"><svg class="rbx"><use href="#rbx"/></svg><span class="num ol3">199</span></div><div class="sub ol2">x1 Egg</div></div>
+        <div class="gift gloss">🎁</div>
+      </div>
+      <div class="btns">
+        <div class="price gloss two"><div class="old ol2"><span>597</span></div><div class="row"><svg class="rbx"><use href="#rbx"/></svg><span class="num ol3">459</span></div><div class="sub ol2">x3 Eggs</div></div>
+        <div class="gift gloss">🎁</div>
+      </div>
+      <div class="btns">
+        <div class="price gloss two"><div class="old ol2"><span>1990</span></div><div class="row"><svg class="rbx"><use href="#rbx"/></svg><span class="num ol3">1299</span></div><div class="sub ol2">x10 Eggs</div></div>
+        <div class="gift gloss">🎁</div>
+      </div>
     </div>
 
-    <div class="hero">
-      <div class="card big shine studs">
-        <span class="tag gold ol1">BEST VALUE!</span>
-        <div class="pic">🎁</div>
-        <div class="col">
-          <div class="name ol2">STARTER PACK</div>
-          <ul class="ol1">
-            <li>30 MIN OF CASH</li>
-            <li>100 ENCHANT SHARDS</li>
-            <li>1 GUARANTEED EPIC EGG</li>
-          </ul>
-          <div class="price ol2 shine">R$ 99 <span class="strike">R$ 299</span></div>
+    <div class="divider ol3">Starter Pack</div>
+    <div class="starter">
+      <div class="bar ol3 gloss">Starter Pack</div>
+      <div class="in">
+        <div class="tile">🏌️</div>
+        <div class="tile">✨<span class="q ol3">x100</span></div>
+        <div class="tile">💵<span class="q ol3">$5K</span></div>
+        <div class="buy">
+          <div class="price gloss"><div class="old ol2"><span>299</span></div><svg class="rbx"><use href="#rbx"/></svg><span class="num ol3">99</span></div>
+          <div class="gift gloss">🎁</div>
         </div>
       </div>
-      <div class="card pass shine studs">
-        <span class="tag ol1">POPULAR</span>
-        <div class="pic h110">🍀</div>
-        <div class="name ol2">2X LUCK</div>
-        <div class="desc ol1">Better rarities from every egg. Forever.</div>
-        <div class="price ol2 shine">R$ 399</div>
+    </div>
+
+    <div class="divider ol3">Gamepasses</div>
+    <div class="passes">
+      <div class="pass blue">
+        <span class="hot ol2">HOT!</span>
+        <div class="bar ol3 gloss">Shoot From Anywhere</div>
+        <div class="in"><div class="pic">🎯</div><div class="col"><div class="desc ol2">Shoot eggs from anywhere, no need to walk to the tee!</div>
+          <div class="btns"><div class="price gloss"><svg class="rbx"><use href="#rbx"/></svg><span class="num ol3">799</span></div><div class="gift gloss">🎁</div></div></div></div>
+      </div>
+      <div class="pass org">
+        <div class="bar ol3 gloss">Super Golph Cart</div>
+        <div class="in"><div class="pic">🛺</div><div class="col"><div class="desc ol2">The fastest cart in the game, carries more animals!</div>
+          <div class="btns"><div class="price gloss"><svg class="rbx"><use href="#rbx"/></svg><span class="num ol3">499</span></div><div class="gift gloss">🎁</div></div></div></div>
+      </div>
+      <div class="pass grn">
+        <span class="hot ol2">BEST!</span>
+        <div class="bar ol3 gloss">2x Money</div>
+        <div class="in"><div class="pic">💸</div><div class="col"><div class="desc ol2">Your plot earns double money forever!</div>
+          <div class="btns"><div class="price gloss"><svg class="rbx"><use href="#rbx"/></svg><span class="num ol3">499</span></div><div class="gift gloss">🎁</div></div></div></div>
+      </div>
+      <div class="pass purp">
+        <div class="bar ol3 gloss">Auto Shoot</div>
+        <div class="in"><div class="pic">🤖</div><div class="col"><div class="desc ol2">Fires at the biggest egg in your zone all by itself!</div>
+          <div class="btns"><div class="price gloss"><svg class="rbx"><use href="#rbx"/></svg><span class="num ol3">999</span></div><div class="gift gloss">🎁</div></div></div></div>
+      </div>
+      <div class="pass teal">
+        <div class="bar ol3 gloss">+250 Inventory</div>
+        <div class="in"><div class="pic">🎒</div><div class="col"><div class="desc ol2">Room for 250 more animals in your inventory!</div>
+          <div class="btns"><div class="price gloss"><svg class="rbx"><use href="#rbx"/></svg><span class="num ol3">199</span></div><div class="gift gloss">🎁</div></div></div></div>
+      </div>
+      <div class="pass red">
+        <div class="bar ol3 gloss">+1 Pickup Slot</div>
+        <div class="in"><div class="pic">🙌</div><div class="col"><div class="desc ol2">Carry one more animal at a time!</div>
+          <div class="btns"><div class="price gloss"><svg class="rbx"><use href="#rbx"/></svg><span class="num ol3">299</span></div><div class="gift gloss">🎁</div></div></div></div>
+      </div>
+      <div class="pass pink">
+        <div class="bar ol3 gloss">2x Lucky Enchant</div>
+        <div class="in"><div class="pic">🍀</div><div class="col"><div class="desc ol2">Double the chance of good, high tier enchants!</div>
+          <div class="btns"><div class="price gloss"><svg class="rbx"><use href="#rbx"/></svg><span class="num ol3">399</span></div><div class="gift gloss">🎁</div></div></div></div>
+      </div>
+      <div class="pass blue">
+        <div class="bar ol3 gloss">2x Offline</div>
+        <div class="in"><div class="pic">🌙</div><div class="col"><div class="desc ol2">Earn double money while you're offline!</div>
+          <div class="btns"><div class="price gloss owned"><span class="num ol3">OWNED</span></div><div class="gift gloss">🎁</div></div></div></div>
       </div>
     </div>
 
-    <div class="sect ol2">CASH</div>
-    <div class="grid3">
-      <div class="card cash shine studs">
-        <div class="pic h90">💵</div>
-        <div class="name ol2">BAG OF CASH</div>
-        <div class="desc ol1">10 min of your income</div>
-        <div class="price ol2 shine">R$ 49</div>
+    <div class="divider ol3">Cash</div>
+    <div class="cash">
+      <div class="cashc studs">
+        <div class="tile">💵</div>
+        <div class="amt ol3">10 Min of Cash</div>
+        <div class="btns"><div class="price gloss"><svg class="rbx"><use href="#rbx"/></svg><span class="num ol3">49</span></div><div class="gift gloss">🎁</div></div>
       </div>
-      <div class="card cash shine studs">
-        <div class="pic h90">💰</div>
-        <div class="name ol2">STACK OF CASH</div>
-        <div class="desc ol1">40 min of your income</div>
-        <div class="price ol2 shine">R$ 149</div>
+      <div class="cashc studs">
+        <div class="tile">💰</div>
+        <div class="amt ol3">40 Min of Cash</div>
+        <div class="btns"><div class="price gloss"><svg class="rbx"><use href="#rbx"/></svg><span class="num ol3">149</span></div><div class="gift gloss">🎁</div></div>
       </div>
-      <div class="card cash shine studs">
-        <span class="tag gold ol1">+20%</span>
-        <div class="pic h90">🏦</div>
-        <div class="name ol2">VAULT OF CASH</div>
-        <div class="desc ol1">2 hours of your income</div>
-        <div class="price ol2 shine">R$ 399</div>
-      </div>
-    </div>
-
-    <div class="sect ol2">GAMEPASSES</div>
-    <div class="grid4">
-      <div class="card pass shine studs">
-        <span class="tag ol1">NEW!</span>
-        <div class="pic h90">🎯</div>
-        <div class="name ol2">SHOOT FROM ANYWHERE</div>
-        <div class="desc ol1">Shoot eggs without going to the tee</div>
-        <div class="price ol2 shine">R$ 799</div>
-      </div>
-      <div class="card gold shine studs">
-        <div class="pic h90">🛺</div>
-        <div class="name ol2">SUPER GOLPH CART</div>
-        <div class="desc ol1">Fastest cart, carries more animals</div>
-        <div class="price ol2 shine">R$ 499</div>
-      </div>
-      <div class="card cash shine studs">
-        <span class="tag gold ol1">POPULAR</span>
-        <div class="pic h90">💸</div>
-        <div class="name ol2">2X MONEY</div>
-        <div class="desc ol1">Your plot earns double, forever</div>
-        <div class="price ol2 shine">R$ 499</div>
-      </div>
-      <div class="card ench shine studs">
-        <div class="pic h90">🤖</div>
-        <div class="name ol2">AUTO SHOOT</div>
-        <div class="desc ol1">Fires at the biggest egg in your zone by itself</div>
-        <div class="price ol2 shine">R$ 999</div>
-      </div>
-    </div>
-    <div class="grid4" style="margin-top:14px">
-      <div class="card gold shine studs">
-        <div class="pic h90">🎒</div>
-        <div class="name ol2">+250 INVENTORY</div>
-        <div class="desc ol1">Room for 250 more animals</div>
-        <div class="price ol2 shine">R$ 199</div>
-      </div>
-      <div class="card pass shine studs">
-        <div class="pic h90">🙌</div>
-        <div class="name ol2">+1 PICKUP SLOT</div>
-        <div class="desc ol1">Carry one more animal at a time</div>
-        <div class="price ol2 shine">R$ 299</div>
-      </div>
-      <div class="card ench shine studs">
-        <div class="pic h90">🍀</div>
-        <div class="name ol2">2X LUCKY ENCHANT</div>
-        <div class="desc ol1">Double chance of good + higher tier enchants</div>
-        <div class="price ol2 shine">R$ 399</div>
-      </div>
-      <div class="card pass shine studs">
-        <div class="pic h90">🌙</div>
-        <div class="name ol2">2X OFFLINE</div>
-        <div class="desc ol1">Double offline earnings</div>
-        <div class="price ol2 shine owned">OWNED</div>
+      <div class="cashc studs">
+        <div class="tile">🏦</div>
+        <div class="amt ol3">2 Hours of Cash</div>
+        <div class="btns"><div class="price gloss"><svg class="rbx"><use href="#rbx"/></svg><span class="num ol3">399</span></div><div class="gift gloss">🎁</div></div>
       </div>
     </div>
   </div>
 </div>
 
 <div class="notes">
-  <b>In the game now:</b> Bag / Stack / Vault of Cash (R$ 49 / 149 / 399) and the 2x Offline pass (R$ 199). Their product ids are still 0, so they show "Coming soon".<br>
-  <b>Your gamepasses (drawn, not built yet):</b> Shoot From Anywhere, Super Golph Cart, 2x Money, Auto Shoot, +250 Inventory, +1 Pickup Slot, 2x Lucky Enchant. Prices are my guesses, tell me yours.<br>
-  <b>My extra ideas:</b> Starter Pack and 2x Luck at the top. Cut them if you don't want them.<br>
-  <b>Owned passes</b> turn grey and say OWNED. Tell me what to keep, cut or change, and the tab layout you want.
+  <b>V2, flashier:</b> yellow title bar, pink sunburst background, rainbow-edged item tiles, crossed-out old prices, Robux icon on every price and a pink 🎁 gift button next to each (buy it for a friend).<br>
+  <b>Sections:</b> Lucky Eggs packs (x1 / x3 / x10), Starter Pack, your 7 gamepasses (+ 2x Offline shown as OWNED), Cash.<br>
+  <b>Prices and the Lucky Egg / Starter Pack items are my guesses.</b> Emojis stand in for real icons. Still square edges + studs, no bobbing. Tell me what to change.
 </div>
 </body>
 </html>
