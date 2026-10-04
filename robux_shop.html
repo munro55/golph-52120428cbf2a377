@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Golph Robux Shop draft</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #6cc04a; background-image: radial-gradient(rgba(255,255,255,.13) 3px, transparent 4px); background-size: 22px 22px; font-family: 'Luckiest Guy'; color: #fff; letter-spacing: .4px; }
+  .ol { -webkit-text-stroke: 3px #000; paint-order: stroke fill; }
+  .ol2 { -webkit-text-stroke: 2px #000; paint-order: stroke fill; }
+  .ol1 { -webkit-text-stroke: 1.4px #000; paint-order: stroke fill; }
+  h1 { text-align: center; font-size: 46px; margin: 22px 0 4px; }
+  .sub { text-align: center; font-size: 17px; margin: 0 0 54px; }
+  .studs { background-image: radial-gradient(circle at 50% 45%, rgba(255,255,255,.24) 0 22%, rgba(0,0,0,.13) 23% 30%, transparent 31%); background-size: 22px 22px; }
+  .shine { position: relative; overflow: hidden; }
+  .shine::before { content: ""; position: absolute; left: 4px; right: 4px; top: 4px; height: 42%; background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0)); pointer-events: none; }
+
+  .w { position: relative; width: 1060px; margin: 0 auto 70px; border: 6px solid #000; padding: 54px 18px 18px; box-shadow: 0 10px 0 #000, inset 0 6px 0 rgba(255,255,255,.3); background-color: #ff3b6b; }
+  .hdr { position: absolute; z-index: 2; left: -22px; top: -40px; height: 74px; border: 6px solid #000; display: flex; align-items: center; padding: 6px 28px 0 20px; box-shadow: 0 6px 0 #000, inset 0 6px 0 rgba(255,255,255,.45); font-size: 40px; background: linear-gradient(#fff06a, #ffb300); }
+  .x { position: absolute; z-index: 3; right: 12px; top: -28px; width: 56px; height: 56px; background: linear-gradient(#ff6a6a, #ff1f1f); border: 5px solid #000; box-shadow: 0 5px 0 #000; font-size: 28px; text-align: center; line-height: 54px; }
+  .robux { position: absolute; z-index: 3; top: -24px; right: 84px; border: 5px solid #000; padding: 8px 14px 2px; font-size: 20px; box-shadow: 0 4px 0 #000; background: linear-gradient(#5cf5d8, #0bb59a); }
+
+  .inner { background: linear-gradient(#ffd0de, #ff8fb0); border: 5px solid #000; padding: 16px; }
+  .tabs { display: flex; gap: 10px; margin-bottom: 14px; }
+  .tab { border: 4px solid #000; padding: 8px 16px 3px; font-size: 18px; box-shadow: 0 4px 0 #000; background: linear-gradient(#b9c2d4, #7d8aa6); }
+  .tab.on { background: linear-gradient(#fff06a, #ffb300); }
+
+  .hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .card { position: relative; border: 5px solid #000; box-shadow: 0 6px 0 #000; padding: 14px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .pic { width: 100%; border: 4px solid #000; background: radial-gradient(#fff 30%, rgba(255,255,255,.55)); display: flex; align-items: center; justify-content: center; font-size: 64px; margin-bottom: 10px; }
+  .name { font-size: 24px; margin-bottom: 4px; }
+  .desc { font-size: 14px; margin-bottom: 12px; min-height: 34px; }
+  .price { margin-top: auto; width: 100%; border: 4px solid #000; box-shadow: 0 4px 0 #000; padding: 10px 0 5px; font-size: 22px; background: linear-gradient(#a6ff5a, #29c21a); }
+  .tag { position: absolute; z-index: 2; top: -16px; right: -12px; border: 4px solid #000; padding: 6px 10px 2px; font-size: 15px; box-shadow: 0 3px 0 #000; transform: rotate(6deg); background: linear-gradient(#ff7ad0, #e0158a); }
+  .tag.gold { background: linear-gradient(#fff06a, #ffb300); }
+  .card.shine { overflow: visible; }
+
+  .big { background: linear-gradient(#c27aff, #7a1fe0); flex-direction: row; text-align: left; gap: 16px; }
+  .big .pic { width: 190px; height: 190px; flex: none; margin: 0; font-size: 96px; }
+  .big .col { display: flex; flex-direction: column; height: 100%; flex: 1; }
+  .big .name { font-size: 32px; }
+  .big ul { margin: 0 0 12px; padding-left: 20px; font-size: 16px; line-height: 1.5; }
+  .strike { font-size: 16px; opacity: .85; text-decoration: line-through; margin-left: 8px; }
+
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 14px; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .cash { background: linear-gradient(#a6ff5a, #29c21a); }
+  .cash .price { background: linear-gradient(#5cf5d8, #0bb59a); }
+  .pass { background: linear-gradient(#5cc8ff, #1e7bff); }
+  .ench { background: linear-gradient(#c27aff, #8a2be2); }
+  .gold { background: linear-gradient(#fff06a, #ffb300); }
+  .pic.h110 { height: 110px; }
+  .pic.h90 { height: 90px; font-size: 52px; }
+  .sect { font-size: 26px; margin: 4px 0 10px; }
+  .owned { background: linear-gradient(#b9c2d4, #7d8aa6) !important; }
+
+  .notes { max-width: 1060px; margin: 0 auto 60px; background: #fff8e6; border: 5px solid #000; box-shadow: 0 7px 0 #000; padding: 16px 22px; color: #1b1b1b; font-family: sans-serif; font-weight: 700; font-size: 15px; line-height: 1.55; }
+  .notes b { font-family: 'Luckiest Guy'; font-weight: normal; font-size: 17px; }
+</style>
+</head>
+<body>
+<h1 class="ol">GOLPH ROBUX SHOP</h1>
+<div class="sub ol2">Draft. Square, studded, glossy, like the other menus. Emojis stand in for real icons.</div>
+
+<div class="w studs">
+  <div class="hdr ol">SHOP</div>
+  <div class="robux ol2">R$ PRICES</div>
+  <div class="x ol2">X</div>
+  <div class="inner">
+    <div class="tabs">
+      <span class="tab on ol1">FEATURED</span>
+      <span class="tab ol1">CASH</span>
+      <span class="tab ol1">PASSES</span>
+      <span class="tab ol1">ENCHANTS</span>
+    </div>
+
+    <div class="hero">
+      <div class="card big shine studs">
+        <span class="tag gold ol1">BEST VALUE!</span>
+        <div class="pic">🎁</div>
+        <div class="col">
+          <div class="name ol2">STARTER PACK</div>
+          <ul class="ol1">
+            <li>30 MIN OF CASH</li>
+            <li>100 ENCHANT SHARDS</li>
+            <li>1 GUARANTEED EPIC EGG</li>
+          </ul>
+          <div class="price ol2 shine">R$ 99 <span class="strike">R$ 299</span></div>
+        </div>
+      </div>
+      <div class="card pass shine studs">
+        <span class="tag ol1">POPULAR</span>
+        <div class="pic h110">🍀</div>
+        <div class="name ol2">2X LUCK</div>
+        <div class="desc ol1">Better rarities from every egg. Forever.</div>
+        <div class="price ol2 shine">R$ 399</div>
+      </div>
+    </div>
+
+    <div class="sect ol2">CASH</div>
+    <div class="grid3">
+      <div class="card cash shine studs">
+        <div class="pic h90">💵</div>
+        <div class="name ol2">BAG OF CASH</div>
+        <div class="desc ol1">10 min of your income</div>
+        <div class="price ol2 shine">R$ 49</div>
+      </div>
+      <div class="card cash shine studs">
+        <div class="pic h90">💰</div>
+        <div class="name ol2">STACK OF CASH</div>
+        <div class="desc ol1">40 min of your income</div>
+        <div class="price ol2 shine">R$ 149</div>
+      </div>
+      <div class="card cash shine studs">
+        <span class="tag gold ol1">+20%</span>
+        <div class="pic h90">🏦</div>
+        <div class="name ol2">VAULT OF CASH</div>
+        <div class="desc ol1">2 hours of your income</div>
+        <div class="price ol2 shine">R$ 399</div>
+      </div>
+    </div>
+
+    <div class="sect ol2">PASSES</div>
+    <div class="grid4">
+      <div class="card pass shine studs">
+        <div class="pic h90">🌙</div>
+        <div class="name ol2">2X OFFLINE</div>
+        <div class="desc ol1">Double offline earnings</div>
+        <div class="price ol2 shine owned">OWNED</div>
+      </div>
+      <div class="card pass shine studs">
+        <div class="pic h90">💸</div>
+        <div class="name ol2">2X MONEY</div>
+        <div class="desc ol1">Your plot earns double</div>
+        <div class="price ol2 shine">R$ 499</div>
+      </div>
+      <div class="card ench shine studs">
+        <div class="pic h90">✨</div>
+        <div class="name ol2">+2 ENCHANT SLOTS</div>
+        <div class="desc ol1">Unlocks altars 4 and 5</div>
+        <div class="price ol2 shine">R$ 249</div>
+      </div>
+      <div class="card gold shine studs">
+        <div class="pic h90">🎒</div>
+        <div class="name ol2">+50 INVENTORY</div>
+        <div class="desc ol1">More room for animals</div>
+        <div class="price ol2 shine">R$ 149</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="notes">
+  <b>In the game now:</b> Bag / Stack / Vault of Cash (R$ 49 / 149 / 399) and the 2x Offline pass (R$ 199). Their product ids are still 0, so they show "Coming soon".<br>
+  <b>New ideas, only drawn here:</b> Starter Pack, 2x Luck, 2x Money, +2 Enchant Slots, +50 Inventory. Prices are placeholders.<br>
+  <b>Owned passes</b> turn grey and say OWNED. Tell me what to keep, cut or change, and the tab layout you want.
+</div>
+</body>
+</html>
