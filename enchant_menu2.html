@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Golph Enchant: A + C, new colours</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+  * { box-sizing: border-box; }
+  :root {
+    --win: #1e7bff; --win2: #0a4fd1;
+    --inner1: #7fd6ff; --inner2: #2f9bff;
+    --board1: #fff06a; --board2: #ffb300;
+    --free1: #9be8ff; --free2: #2fb8ff; --freeOrb: #e8fbff; --freeGlow: #8af0ff;
+    --busy1: #ffd36a; --busy2: #ff8a00; --busyOrb: #fff6d6; --busyGlow: #ffd24a;
+    --done1: #a6ff5a; --done2: #29c21a; --doneOrb: #eaffd6; --doneGlow: #b7ff7a;
+    --lock1: #8fa3c4; --lock2: #55678a; --lockOrb: #2c3a55;
+    --page1: #e9f8ff; --page2: #b9e6ff; --spine: #0a4fd1;
+    --card1: #5cc8ff; --card2: #1e7bff;
+    --sel: #fff06a;
+    --btn1: #ff7ad0; --btn2: #e0158a;
+    --pill1: #fff06a; --pill2: #ffb300;
+  }
+  body.green {
+    --win: #2fbf2f; --win2: #168a16;
+    --inner1: #b6ff7a; --inner2: #4fd62a;
+    --board1: #fff06a; --board2: #ffb300;
+    --free1: #d6ffb0; --free2: #6be03a; --freeOrb: #f3ffe6; --freeGlow: #d6ff8a;
+    --busy1: #fff06a; --busy2: #ffb300; --busyOrb: #fffbe0; --busyGlow: #ffe14d;
+    --done1: #8ff7ff; --done2: #1fc9e0; --doneOrb: #e6fdff; --doneGlow: #8af0ff;
+    --lock1: #9aa88f; --lock2: #5f6e55; --lockOrb: #34402c;
+    --page1: #f2ffe6; --page2: #ccf5a8; --spine: #168a16;
+    --card1: #8ef05a; --card2: #2fbf2f;
+    --sel: #fff06a;
+    --btn1: #fff06a; --btn2: #ff9d00;
+    --pill1: #8ff7ff; --pill2: #1fc9e0;
+  }
+  body.sunset {
+    --win: #ff6a1f; --win2: #d63a00;
+    --inner1: #ffd06a; --inner2: #ff8a2a;
+    --board1: #ff7ad0; --board2: #e0158a;
+    --free1: #ffe7a6; --free2: #ffb32f; --freeOrb: #fffbe8; --freeGlow: #ffe08a;
+    --busy1: #ff8ad8; --busy2: #e0158a; --busyOrb: #ffe6f6; --busyGlow: #ff8ad8;
+    --done1: #a6ff5a; --done2: #29c21a; --doneOrb: #eaffd6; --doneGlow: #b7ff7a;
+    --lock1: #b49a8a; --lock2: #7a5f50; --lockOrb: #45342b;
+    --page1: #fff6e0; --page2: #ffd9a0; --spine: #d63a00;
+    --card1: #ffb35c; --card2: #ff6a1f;
+    --sel: #ff7ad0;
+    --btn1: #a6ff5a; --btn2: #29c21a;
+    --pill1: #ff7ad0; --pill2: #e0158a;
+  }
+  body { margin: 0; background: #6cc04a; background-image: radial-gradient(rgba(255,255,255,.13) 3px, transparent 4px); background-size: 22px 22px; font-family: 'Luckiest Guy'; color: #fff; letter-spacing: .4px; }
+  .ol { -webkit-text-stroke: 3px #000; paint-order: stroke fill; }
+  .ol2 { -webkit-text-stroke: 2px #000; paint-order: stroke fill; }
+  .ol1 { -webkit-text-stroke: 1.3px #000; paint-order: stroke fill; }
+  h1 { text-align: center; font-size: 48px; margin: 22px 0 6px; }
+  .sub { text-align: center; font-size: 17px; margin: 0 auto 16px; max-width: 900px; }
+  .switch { display: flex; gap: 12px; justify-content: center; margin-bottom: 56px; }
+  .switch button { font-family: 'Luckiest Guy'; font-size: 20px; color: #fff; border: 4px solid #000; padding: 9px 16px 4px; box-shadow: 0 4px 0 #000; cursor: pointer; -webkit-text-stroke: 1.5px #000; paint-order: stroke fill; }
+  .switch .b1 { background: linear-gradient(#5cc8ff, #1e7bff); }
+  .switch .b2 { background: linear-gradient(#8ef05a, #2fbf2f); }
+  .switch .b3 { background: linear-gradient(#ffb35c, #ff6a1f); }
+  .switch button.on { outline: 5px solid #fff; outline-offset: 2px; }
+  .row { display: flex; flex-wrap: wrap; gap: 90px 50px; justify-content: center; padding: 0 30px 70px; align-items: flex-start; }
+  .label { text-align: center; font-size: 28px; margin-bottom: 52px; }
+  .label small { display: block; font-size: 15px; margin-top: 4px; color: #fff7c2; }
+  .studs { background-image: radial-gradient(circle at 50% 45%, rgba(255,255,255,.24) 0 22%, rgba(0,0,0,.13) 23% 30%, transparent 31%); background-size: 22px 22px; }
+
+  .w { position: relative; border: 6px solid #000; padding: 52px 16px 16px; box-shadow: 0 10px 0 #000, inset 0 6px 0 rgba(255,255,255,.3); background-color: var(--win); }
+  .hdr { position: absolute; z-index: 2; left: -22px; top: -38px; height: 72px; }
+  .board { height: 100%; border: 6px solid #000; display: flex; align-items: center; padding: 6px 26px 0 18px; box-shadow: 0 6px 0 #000, inset 0 6px 0 rgba(255,255,255,.45); font-size: 38px; background: linear-gradient(var(--board1), var(--board2)); }
+  .x { position: absolute; z-index: 3; right: 12px; top: -28px; width: 54px; height: 54px; background: linear-gradient(#ff6a6a, #ff1f1f); border: 5px solid #000; box-shadow: 0 5px 0 #000; font-size: 28px; text-align: center; line-height: 52px; }
+  .pill { position: absolute; z-index: 3; top: -24px; right: 82px; border: 5px solid #000; padding: 8px 14px 2px; font-size: 20px; box-shadow: 0 4px 0 #000; background: linear-gradient(var(--pill1), var(--pill2)); }
+  .back { position: absolute; z-index: 3; left: 22px; top: 58px; width: 48px; height: 44px; background: #fff; border: 4px solid #000; box-shadow: 0 4px 0 #000; color: #ffd400; font-size: 26px; text-align: center; line-height: 40px; -webkit-text-stroke: 2px #000; paint-order: stroke fill; }
+  .S2 .page:first-child .tabs { margin-left: 58px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; border: 4px solid #000; box-shadow: 0 4px 0 #000; padding: 6px 10px 2px; font-size: 14px; }
+  .teal { background: linear-gradient(#5cf5d8, #0bb59a); }
+  .goldb { background: linear-gradient(#fff06a, #ffb300); }
+  .shine { position: relative; overflow: hidden; }
+  .shine::before { content: ""; position: absolute; left: 4px; right: 4px; top: 4px; height: 42%; background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0)); pointer-events: none; }
+
+  /* screen 1: altars */
+  .S1 { width: 720px; }
+  .S1 .inner { background: linear-gradient(var(--inner1), var(--inner2)); border: 5px solid #000; padding: 16px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  .altar { position: relative; aspect-ratio: 0.72; border: 5px solid #000; box-shadow: 0 5px 0 #000; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 10px; }
+  .altar .num { position: absolute; z-index: 2; top: 6px; left: 6px; width: 32px; height: 32px; border: 3px solid #000; background: linear-gradient(#fff06a, #ffb300); font-size: 18px; display: flex; align-items: center; justify-content: center; padding-top: 3px; }
+  .altar .orb { width: 72%; aspect-ratio: 1; border-radius: 50%; border: 4px solid #000; margin-bottom: auto; margin-top: 30px; display: flex; align-items: center; justify-content: center; font-size: 40px; position: relative; z-index: 1; }
+  .altar .t { font-size: 14px; margin-bottom: 6px; text-align: center; position: relative; z-index: 1; }
+  .altar .btn { position: relative; z-index: 1; }
+  .altar.free { background: linear-gradient(var(--free1), var(--free2)); }
+  .altar.free .orb { background: radial-gradient(#fff, var(--freeOrb)); box-shadow: 0 0 24px 8px var(--freeGlow); }
+  .altar.busy { background: linear-gradient(var(--busy1), var(--busy2)); }
+  .altar.busy .orb { background: radial-gradient(#fff, var(--busyOrb)); box-shadow: 0 0 26px 10px var(--busyGlow); }
+  .altar.done { background: linear-gradient(var(--done1), var(--done2)); }
+  .altar.done .orb { background: radial-gradient(#fff, var(--doneOrb)); box-shadow: 0 0 26px 10px var(--doneGlow); }
+  .altar.locked { background: linear-gradient(var(--lock1), var(--lock2)); }
+  .altar.locked .orb { background: var(--lockOrb); font-size: 32px; }
+  .timer { font-size: 20px; margin-bottom: 6px; position: relative; z-index: 1; }
+
+  /* screen 2: spellbook with inventory */
+  .S2 { width: 900px; }
+  .book { display: grid; grid-template-columns: 1.15fr 1fr; border: 5px solid #000; box-shadow: 0 6px 0 #000; margin-top: 6px; }
+  .page { background: linear-gradient(var(--page1), var(--page2)); padding: 14px; min-height: 470px; }
+  .page + .page { border-left: 8px solid var(--spine); box-shadow: inset 6px 0 0 #000; }
+  .page h3 { margin: 0 0 10px; font-size: 22px; }
+  .tabs { display: flex; gap: 8px; margin-bottom: 10px; }
+  .tab { font-size: 15px; padding: 6px 12px 2px; border: 4px solid #000; background: linear-gradient(#ffffff, #d9e6f2); color: #fff; -webkit-text-stroke: 1.3px #000; paint-order: stroke fill; box-shadow: 0 3px 0 #000; }
+  .tab.on { background: linear-gradient(var(--board1), var(--board2)); color: #fff; -webkit-text-stroke: 1.3px #000; paint-order: stroke fill; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; }
+  .it { aspect-ratio: 1 / 1.15; border: 4px solid #000; box-shadow: 0 4px 0 #000; background: linear-gradient(var(--card1), var(--card2)); display: flex; flex-direction: column; overflow: hidden; }
+  .it .rs { height: 14px; border-bottom: 3px solid #000; }
+  .it .pic { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 34px; background: radial-gradient(rgba(255,255,255,.95) 30%, rgba(255,255,255,.45)); }
+  .it .nm { font-size: 10px; text-align: center; padding: 3px 2px 2px; }
+  .it.sel { outline: 5px solid var(--sel); outline-offset: 2px; }
+  .bigorb { width: 160px; height: 160px; margin: 4px auto 10px; border-radius: 50%; border: 5px solid #000; background: radial-gradient(#fff 25%, var(--freeOrb) 60%, var(--free2)); box-shadow: 0 0 30px 10px var(--freeGlow); display: flex; align-items: center; justify-content: center; font-size: 76px; }
+  .iname { text-align: center; font-size: 24px; }
+  .cap { text-align: center; font-size: 14px; margin: 10px 0 6px; }
+  .chips { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-bottom: 10px; }
+  .chip { border: 3px solid #000; padding: 5px 8px 1px; font-size: 13px; }
+  .chip.g { background: linear-gradient(#a6ff5a, #29c21a); } .chip.b { background: linear-gradient(#ff8a8a, #ff1f1f); }
+  .cost { text-align: center; font-size: 20px; margin: 14px 0 4px; }
+  .have { text-align: center; font-size: 13px; margin-bottom: 10px; }
+  .ench { display: block; text-align: center; border: 5px solid #000; box-shadow: 0 5px 0 #000; padding: 12px 0 6px; font-size: 26px; background: linear-gradient(var(--btn1), var(--btn2)); }
+  .r1 { background: #c8c8c8; } .r3 { background: #468cff; } .r4 { background: #aa50ff; } .r5 { background: #ffb41e; } .r6 { background: #ff3c5a; }
+  .r7 { background: linear-gradient(90deg, #ff5fa2, #ffe14d, #7dff5a, #5cc8ff, #b06bff); }
+
+  .notes { max-width: 1100px; margin: 0 auto 60px; background: #fff8e6; border: 5px solid #000; box-shadow: 0 7px 0 #000; padding: 16px 22px; color: #1b1b1b; font-family: sans-serif; font-weight: 700; font-size: 15px; line-height: 1.5; }
+  .notes b { font-family: 'Luckiest Guy'; font-weight: normal; font-size: 17px; }
+</style>
+</head>
+<body>
+<h1 class="ol">ENCHANT: A + C</h1>
+<div class="sub ol2">Screen 1 = Crystal Altars. Click a free altar to open the Spellbook with your inventory inside. Try the colour themes:</div>
+<div class="switch">
+  <button class="b1 on" data-t="">OCEAN MAGIC</button>
+  <button class="b2" data-t="green">GOLPH GREEN</button>
+  <button class="b3" data-t="sunset">SUNSET</button>
+</div>
+
+<div class="row">
+  <div>
+    <div class="label ol2">SCREEN 1: ALTARS</div>
+    <div class="w S1 studs">
+      <div class="hdr"><div class="board ol">ENCHANT</div></div>
+      <div class="pill ol2">500 SHARDS</div>
+      <div class="x ol2">X</div>
+      <div class="inner">
+        <div class="altar free shine"><span class="num ol1">1</span><div class="orb">✨</div><div class="t ol1">TAP TO ENCHANT</div></div>
+        <div class="altar busy shine"><span class="num ol1">2</span><div class="orb">🗡️</div><div class="timer ol2">07:42</div><span class="btn teal ol1">SKIP R$</span></div>
+        <div class="altar done shine"><span class="num ol1">3</span><div class="orb">🐧</div><div class="t ol1">READY!</div><span class="btn goldb ol1">COLLECT</span></div>
+        <div class="altar locked shine"><span class="num ol1">4</span><div class="orb">🔒</div><div class="t ol1">LOCKED</div><span class="btn teal ol1">R$ 49</span></div>
+        <div class="altar locked shine"><span class="num ol1">5</span><div class="orb">🔒</div><div class="t ol1">LOCKED</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="label ol2">SCREEN 2: SPELLBOOK + INVENTORY</div>
+    <div class="w S2 studs">
+      <div class="hdr"><div class="board ol">SLOT 1</div></div>
+      <div class="pill ol2">500 SHARDS</div>
+      <div class="x ol2">X</div>
+      <div class="back">◀</div>
+      <div class="book">
+        <div class="page">
+          <div class="tabs"><span class="tab">CLUBS</span><span class="tab on">ANIMALS</span></div>
+          <div class="grid">
+            <div class="it sel"><div class="rs r5"></div><div class="pic">🐻‍❄️</div><div class="nm ol1">SANDY POLAR BEAR</div></div>
+            <div class="it"><div class="rs r4"></div><div class="pic">🐧</div><div class="nm ol1">LAVA PENGUIN</div></div>
+            <div class="it"><div class="rs r4"></div><div class="pic">🐧</div><div class="nm ol1">CANDY PENGUIN</div></div>
+            <div class="it"><div class="rs r7"></div><div class="pic">🦀</div><div class="nm ol1">KING CRABBY</div></div>
+            <div class="it"><div class="rs r6"></div><div class="pic">🐉</div><div class="nm ol1">POND DRAGON</div></div>
+            <div class="it"><div class="rs r3"></div><div class="pic">🦊</div><div class="nm ol1">FOX</div></div>
+            <div class="it"><div class="rs r1"></div><div class="pic">🐥</div><div class="nm ol1">CHICK</div></div>
+            <div class="it"><div class="rs r5"></div><div class="pic">🦅</div><div class="nm ol1">EAGLE</div></div>
+          </div>
+        </div>
+        <div class="page">
+          <div class="bigorb">🐻‍❄️</div>
+          <div class="iname ol2">SANDY POLAR BEAR</div>
+          <div class="cap ol1">CURRENT ENCHANTS</div>
+          <div class="chips"><span class="chip g ol1">MONEY HUNGRY II</span><span class="chip b ol1">LAZY</span></div>
+          <div class="cost ol2">60 SHARDS</div>
+          <div class="have ol1">YOU HAVE 500 · REPLACES ALL ENCHANTS</div>
+          <span class="ench ol2">ENCHANT</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="notes">
+  <b>Same in every theme:</b> square hard edges, stud texture, glossy top on altars, white Golph text with black outlines. Emojis stand in for the real 3D models / club icons.<br>
+  <b>Ocean Magic</b> = bright blue + cyan + gold. <b>Golph Green</b> = matches the grass and the HUD. <b>Sunset</b> = orange + pink + gold.<br>
+  Tell me a theme (or mix, e.g. "Ocean altars with Sunset book") and I'll build it.
+</div>
+<script>
+  document.querySelectorAll('.switch button').forEach(b => b.onclick = () => {
+    document.body.className = b.dataset.t;
+    document.querySelectorAll('.switch button').forEach(x => x.classList.toggle('on', x === b));
+  });
+</script>
+</body>
+</html>
