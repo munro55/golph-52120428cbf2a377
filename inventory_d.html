@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Golph Inventory: A + B mix</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #6cc04a; background-image: radial-gradient(rgba(255,255,255,.13) 3px, transparent 4px); background-size: 22px 22px; font-family: 'Luckiest Guy'; color: #fff; letter-spacing: .4px; }
+  .ol { -webkit-text-stroke: 3px #000; paint-order: stroke fill; }
+  .ol2 { -webkit-text-stroke: 2px #000; paint-order: stroke fill; }
+  .ol1 { -webkit-text-stroke: 1.2px #000; paint-order: stroke fill; }
+  h1 { text-align: center; font-size: 50px; margin: 24px 0 2px; }
+  .sub { text-align: center; font-size: 18px; margin: 0 auto 60px; max-width: 900px; }
+  .row { display: flex; justify-content: center; padding: 0 30px 70px; }
+
+  .stack { position: relative; width: 960px; }
+  .w { position: relative; border-radius: 28px; border: 6px solid #000; padding: 50px 14px 14px;
+       background-color: #ff9a2e;
+       background-image: radial-gradient(circle at 50% 45%, rgba(255,255,255,.2) 0 22%, rgba(0,0,0,.10) 23% 30%, transparent 31%);
+       background-size: 22px 22px; box-shadow: 0 10px 0 #000, inset 0 6px 0 rgba(255,255,255,.25); }
+  .hdr { position: absolute; z-index: 2; left: -26px; top: -36px; height: 70px; }
+  .board { height: 100%; border-radius: 22px; border: 6px solid #000; display: flex; align-items: center; gap: 10px; padding: 6px 26px 0 18px;
+           background: linear-gradient(#ffe46a, #ffbf1f 60%, #e9a10a); box-shadow: 0 6px 0 #000, inset 0 6px 0 rgba(255,255,255,.4); font-size: 36px; }
+  .x { position: absolute; z-index: 3; right: 14px; top: -26px; width: 52px; height: 52px; border-radius: 14px; background: #ff3b3b; border: 5px solid #000; box-shadow: 0 5px 0 #000; font-size: 26px; text-align: center; line-height: 50px; }
+  .count { position: absolute; z-index: 3; right: 80px; top: -22px; background: #8be85f; border: 5px solid #000; border-radius: 14px; padding: 8px 14px 2px; font-size: 20px; box-shadow: 0 4px 0 #000; }
+  .inner { background: rgba(255,251,234,.92); border: 5px solid #000; border-radius: 18px; overflow: hidden; display: flex; }
+  .hint { font-size: 14px; color: #fff; text-align: center; margin: 10px 0 2px; }
+
+  .r1 { --rc: #c8c8c8; } .r2 { --rc: #5ac85a; } .r3 { --rc: #468cff; } .r4 { --rc: #aa50ff; }
+  .r5 { --rc: #ffb41e; } .r6 { --rc: #ff3c5a; } .r7 { --rc: #ff5fa2; }
+  .rainbow { background: linear-gradient(90deg, #ff5fa2, #ffe14d, #7dff5a, #5cc8ff, #b06bff) !important; }
+
+  .left { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+  .tabs { display: flex; gap: 8px; padding: 12px 14px 6px; align-items: center; }
+  .tabs .lbl { font-size: 14px; color: #000; margin-right: 2px; }
+  .tab { font-size: 14px; padding: 6px 12px 2px; border: 4px solid #000; border-radius: 12px; background: #fff; color: #000; box-shadow: 0 3px 0 #000; cursor: pointer; }
+  .tab.on { background: #ffe14d; }
+
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 8px 22px 16px 14px; height: 480px; overflow: hidden; position: relative; }
+  .grid::after { content: ""; position: absolute; right: 6px; top: 10px; width: 9px; height: 150px; border-radius: 6px; background: rgba(0,0,0,.3); }
+
+  .card { border: 4px solid #000; border-radius: 16px; background: #fff; box-shadow: 0 4px 0 #000; overflow: hidden; display: flex; flex-direction: column; height: 214px; cursor: pointer; }
+  .card .top { background: var(--rc); border-bottom: 3px solid #000; padding: 5px 7px 1px; display: flex; justify-content: space-between; font-size: 12px; }
+  .card .pic { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 60px; background: radial-gradient(#fff 30%, #f3ecd2); }
+  .card .nm { font-size: 15px; text-align: center; padding: 4px 5px 0; line-height: 1.05; }
+  .card .info { display: flex; justify-content: center; gap: 8px; font-size: 12px; color: #000; padding: 3px 0 7px; }
+  .card .info .money { color: #16a34a; }
+  .card.r7 { background: #2a2140; }
+  .card.r7 .pic { background: radial-gradient(#4a3d74 30%, #1a142c); }
+  .card.r7 .info { color: #fff; }
+  .card.sel { outline: 5px solid #ffe14d; outline-offset: 2px; }
+  .card.empty { border-style: dashed; background: rgba(0,0,0,.07); box-shadow: none; }
+
+  .side { width: 280px; border-left: 5px solid #000; background: #fff3c4; padding: 16px 14px; display: flex; flex-direction: column; align-items: center; gap: 9px; }
+  .side .big { width: 190px; height: 160px; border: 4px solid #000; border-radius: 16px; background: radial-gradient(#fff, #ffe8a8); display: flex; align-items: center; justify-content: center; font-size: 100px; box-shadow: 0 4px 0 #000; }
+  .side .nm { font-size: 26px; text-align: center; line-height: 1; }
+  .pill { display: inline-block; font-size: 13px; padding: 4px 10px 1px; border: 3px solid #000; border-radius: 9px; background: var(--rc); }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; width: 100%; }
+  .stats div { background: #fff; border: 3px solid #000; border-radius: 10px; padding: 6px 0 2px; text-align: center; font-size: 11px; color: #555; }
+  .stats b { display: block; font-size: 17px; color: #16a34a; }
+  .stats .wide { grid-column: span 2; }
+  .elabel { font-size: 13px; color: #000; margin-top: 2px; }
+  .ench { display: flex; gap: 6px; justify-content: center; }
+  .ench span { width: 42px; height: 42px; border: 3px dashed #000; border-radius: 10px; background: rgba(0,0,0,.08); }
+  .btns { display: flex; gap: 8px; width: 100%; margin-top: auto; }
+  .b { flex: 1; display: inline-flex; align-items: center; justify-content: center; border: 4px solid #000; border-radius: 13px; box-shadow: 0 4px 0 #000; padding: 9px 12px 3px; font-size: 20px; }
+  .b.place { background: linear-gradient(#a6f56a, #4cc22a); }
+  .b.sell { background: linear-gradient(#ff8a8a, #ff3b3b); }
+
+  .notes { max-width: 960px; margin: 0 auto 60px; background: #fff8e6; border: 5px solid #000; border-radius: 22px; box-shadow: 0 7px 0 #000; padding: 16px 22px; color: #1b1b1b; font-family: sans-serif; font-weight: 700; font-size: 15px; line-height: 1.5; }
+  .notes b { font-family: 'Luckiest Guy'; font-weight: normal; font-size: 17px; }
+</style>
+</head>
+<body>
+<h1 class="ol">INVENTORY: A + B MIX</h1>
+<div class="sub ol2">B's info cards and sort tabs, in A's layout with the detail panel. Click a card to see it on the right.</div>
+
+<div class="row">
+  <div class="stack">
+    <div class="w">
+      <div class="hdr"><div class="board ol">🎒 INVENTORY</div></div>
+      <div class="count ol2">12 / 20</div>
+      <div class="x ol2">X</div>
+      <div class="inner">
+        <div class="left">
+          <div class="tabs"><span class="lbl">SORT:</span><span class="tab on">RARITY</span><span class="tab">KG</span><span class="tab">VALUE</span><span class="tab">NEWEST</span></div>
+          <div class="grid" id="grid"></div>
+        </div>
+        <div class="side" id="side">
+          <div class="big" id="sBig"></div>
+          <div class="nm ol2" id="sName"></div>
+          <span class="pill ol1" id="sPill"></span>
+          <div class="stats">
+            <div>WEIGHT<b id="sKg"></b></div>
+            <div>FROM<b id="sZone"></b></div>
+            <div>INCOME<b id="sInc"></b></div>
+            <div>SELLS FOR<b id="sSell"></b></div>
+          </div>
+          <div class="elabel">ENCHANTS</div>
+          <div class="ench"><span></span></div>
+          <div class="btns"><span class="b place ol2">PLACE</span><span class="b sell ol2">SELL</span></div>
+        </div>
+      </div>
+      <div class="hint ol1">Animals here earn nothing. Place them on your plot to earn.</div>
+    </div>
+  </div>
+</div>
+
+<div class="notes">
+  <b>Cards (from B):</b> rarity strip with KG on top, the animal, name, zone and sell value. No buttons on the card.<br>
+  <b>Layout (from A):</b> 4 cards per row on the left, detail panel on the right with a big picture, weight, zone, income, sell price, the enchant slot, and PLACE / SELL.<br>
+  <b>Sort tabs:</b> Rarity, KG, Value, Newest. Try them here, they work. Empty slots show as dashed cards, and the Secret gets a dark card with a rainbow strip.<br>
+  <b>In game:</b> real 3D animal models instead of the emojis, no bobbing or pulsing, and hover grows from the centre.
+</div>
+
+<script>
+  const RAR = ["", "COMMON", "UNCOMMON", "RARE", "EPIC", "LEGENDARY", "MYTHIC", "SECRET"];
+  const A = [
+    { n: "SANDY LION", e: "🦁", r: 5, kg: 14, z: 7, v: 8400, inc: 120, t: 9 },
+    { n: "FOX", e: "🦊", r: 3, kg: 6, z: 2, v: 640, inc: 9, t: 3 },
+    { n: "CHICK", e: "🐥", r: 1, kg: 2, z: 1, v: 40, inc: 1, t: 1 },
+    { n: "POND DRAGON", e: "🐉", r: 6, kg: 23, z: 12, v: 33000, inc: 410, t: 11 },
+    { n: "PIGLET", e: "🐷", r: 2, kg: 3, z: 1, v: 90, inc: 2, t: 2 },
+    { n: "PENGUIN", e: "🐧", r: 4, kg: 9, z: 4, v: 1900, inc: 28, t: 6 },
+    { n: "KING CRABBY", e: "🦀", r: 7, kg: 41, z: 9, v: 71000, inc: 950, t: 12 },
+    { n: "BUNNY", e: "🐰", r: 1, kg: 2, z: 1, v: 35, inc: 1, t: 4 },
+    { n: "PANDA", e: "🐼", r: 3, kg: 5, z: 3, v: 520, inc: 8, t: 5 },
+    { n: "PUPPY", e: "🐶", r: 2, kg: 3, z: 2, v: 110, inc: 2, t: 7 },
+    { n: "EAGLE", e: "🦅", r: 5, kg: 12, z: 3, v: 4100, inc: 60, t: 8 },
+    { n: "FROG", e: "🐸", r: 1, kg: 2, z: 1, v: 30, inc: 1, t: 10 },
+  ];
+  const SLOTS = 20;
+  const fmt = n => n >= 1000 ? (n / 1000).toFixed(n >= 10000 ? 0 : 1).replace(/\.0$/, "") + "K" : String(n);
+  let sortKey = "RARITY", sel = A[0];
+  const sorters = { RARITY: (a, b) => b.r - a.r || b.kg - a.kg, KG: (a, b) => b.kg - a.kg, VALUE: (a, b) => b.v - a.v, NEWEST: (a, b) => b.t - a.t };
+  function render() {
+    const g = document.getElementById("grid");
+    g.innerHTML = "";
+    [...A].sort(sorters[sortKey]).forEach(a => {
+      const c = document.createElement("div");
+      c.className = "card r" + a.r + (a === sel ? " sel" : "");
+      c.innerHTML = `<div class="top ol1 ${a.r === 7 ? "rainbow" : ""}"><span>${RAR[a.r]}</span><span>${a.kg} KG</span></div>
+        <div class="pic">${a.e}</div><div class="nm ol2">${a.n}</div>
+        <div class="info"><span>ZONE ${a.z}</span><span class="money">$${fmt(a.v)}</span></div>`;
+      c.onclick = () => { sel = a; render(); };
+      g.appendChild(c);
+    });
+    for (let i = A.length; i < SLOTS; i++) { const e = document.createElement("div"); e.className = "card empty"; g.appendChild(e); }
+    const s = document.getElementById("side");
+    s.className = "side r" + sel.r;
+    document.getElementById("sBig").textContent = sel.e;
+    document.getElementById("sName").textContent = sel.n;
+    const p = document.getElementById("sPill");
+    p.textContent = RAR[sel.r];
+    p.classList.toggle("rainbow", sel.r === 7);
+    document.getElementById("sKg").textContent = sel.kg + " KG";
+    document.getElementById("sZone").textContent = "ZONE " + sel.z;
+    document.getElementById("sInc").textContent = "$" + fmt(sel.inc) + "/S";
+    document.getElementById("sSell").textContent = "$" + fmt(sel.v);
+  }
+  document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
+    document.querySelectorAll(".tab").forEach(x => x.classList.remove("on"));
+    t.classList.add("on"); sortKey = t.textContent; render();
+  });
+  render();
+</script>
+</body>
+</html>
