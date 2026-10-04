@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Golph Enchant menu ideas</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #6cc04a; background-image: radial-gradient(rgba(255,255,255,.13) 3px, transparent 4px); background-size: 22px 22px; font-family: 'Luckiest Guy'; color: #fff; letter-spacing: .4px; }
+  .ol { -webkit-text-stroke: 3px #000; paint-order: stroke fill; }
+  .ol2 { -webkit-text-stroke: 2px #000; paint-order: stroke fill; }
+  .ol1 { -webkit-text-stroke: 1.3px #000; paint-order: stroke fill; }
+  h1 { text-align: center; font-size: 50px; margin: 24px 0 2px; }
+  .sub { text-align: center; font-size: 18px; margin: 0 auto 50px; max-width: 900px; }
+  .row { display: flex; flex-wrap: wrap; gap: 90px 60px; justify-content: center; padding: 0 30px 80px; align-items: flex-start; }
+  .label { text-align: center; font-size: 30px; margin-bottom: 50px; }
+  .label small { display: block; font-size: 16px; margin-top: 4px; color: #fff7c2; }
+  .studs { background-image: radial-gradient(circle at 50% 45%, rgba(255,255,255,.22) 0 22%, rgba(0,0,0,.12) 23% 30%, transparent 31%); background-size: 22px 22px; }
+
+  .w { position: relative; border: 6px solid #000; padding: 52px 16px 16px; box-shadow: 0 10px 0 #000, inset 0 6px 0 rgba(255,255,255,.3); }
+  .hdr { position: absolute; z-index: 2; left: -22px; top: -38px; height: 72px; }
+  .board { height: 100%; border: 6px solid #000; display: flex; align-items: center; gap: 10px; padding: 6px 26px 0 18px; box-shadow: 0 6px 0 #000, inset 0 6px 0 rgba(255,255,255,.45); font-size: 38px; }
+  .x { position: absolute; z-index: 3; right: 12px; top: -28px; width: 54px; height: 54px; background: #ff2a2a; border: 5px solid #000; box-shadow: 0 5px 0 #000; font-size: 28px; text-align: center; line-height: 52px; }
+  .pill { position: absolute; z-index: 3; top: -24px; border: 5px solid #000; padding: 8px 14px 2px; font-size: 20px; box-shadow: 0 4px 0 #000; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; border: 4px solid #000; box-shadow: 0 4px 0 #000; padding: 8px 16px 3px; font-size: 18px; }
+  .green { background: linear-gradient(#a6ff5a, #36c41a); }
+  .teal { background: linear-gradient(#5cf5d8, #0bb59a); }
+  .pink { background: linear-gradient(#ff7ad0, #e0158a); }
+  .gold { background: linear-gradient(#fff06a, #ffb300); }
+  .gray { background: linear-gradient(#c9c3d6, #8e86a3); }
+
+  /* ============ A: CRYSTAL ALTAR ============ */
+  .A { width: 720px; background-color: #8a2cff; border-radius: 0; }
+  .A .board { background: linear-gradient(#ffe95a, #ff9d00); }
+  .A .inner { background: linear-gradient(#c79bff, #9b4dff); border: 5px solid #000; padding: 16px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  .altar { position: relative; aspect-ratio: 0.72; border: 5px solid #000; box-shadow: 0 5px 0 #000; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 10px; overflow: hidden; }
+  .altar .num { position: absolute; top: 6px; left: 6px; width: 32px; height: 32px; border: 3px solid #000; background: #ffd400; color: #fff; font-size: 18px; display: flex; align-items: center; justify-content: center; padding-top: 3px; }
+  .altar .orb { width: 70%; aspect-ratio: 1; border-radius: 50%; border: 4px solid #000; margin-bottom: auto; margin-top: 30px; display: flex; align-items: center; justify-content: center; font-size: 40px; }
+  .altar .t { font-size: 14px; margin-bottom: 6px; text-align: center; }
+  .altar.free { background: linear-gradient(#e2c8ff, #b07cff); }
+  .altar.free .orb { background: radial-gradient(#ffffff, #d9b8ff); box-shadow: 0 0 22px 6px #fff8, inset 0 0 14px #b07cff; }
+  .altar.busy { background: linear-gradient(#ff8ad8, #c22ba1); }
+  .altar.busy .orb { background: radial-gradient(#fff, #ffd1ef); box-shadow: 0 0 26px 10px #ff6ad5aa; }
+  .altar.done { background: linear-gradient(#9dff7a, #2fbf2f); }
+  .altar.done .orb { background: radial-gradient(#fff, #d6ffc4); box-shadow: 0 0 26px 10px #b7ff8aaa; }
+  .altar.locked { background: linear-gradient(#8f84a8, #5c5272); }
+  .altar.locked .orb { background: #3a3150; font-size: 32px; }
+  .timer { font-size: 20px; margin-bottom: 6px; }
+
+  /* ============ B: TICKET ROWS (current layout, polished) ============ */
+  .B { width: 620px; background-color: #7a1fff; }
+  .B .board { background: linear-gradient(#ffe95a, #ff9d00); }
+  .B .inner { background: linear-gradient(#b884ff, #8a3dff); border: 5px solid #000; padding: 14px; display: flex; flex-direction: column; gap: 12px; }
+  .ticket { display: flex; align-items: center; gap: 14px; border: 5px solid #000; box-shadow: 0 5px 0 #000; padding: 10px 14px; position: relative; }
+  .ticket::after { content: ""; position: absolute; left: 76px; top: 8px; bottom: 8px; border-left: 4px dashed rgba(0,0,0,.35); }
+  .ticket .n { width: 52px; height: 52px; border: 4px solid #000; background: linear-gradient(#fff06a, #ffb300); font-size: 28px; display: flex; align-items: center; justify-content: center; padding-top: 4px; flex: none; }
+  .ticket .ic { width: 64px; height: 64px; border: 4px solid #000; background: radial-gradient(#fff, #ead6ff); display: flex; align-items: center; justify-content: center; font-size: 34px; margin-left: 14px; flex: none; }
+  .ticket .mid { flex: 1; }
+  .ticket .t1 { font-size: 22px; }
+  .ticket .t2 { font-size: 14px; margin-top: 4px; }
+  .bar { height: 14px; border: 3px solid #000; background: #3b1a6b; margin-top: 6px; }
+  .bar i { display: block; height: 100%; background: linear-gradient(90deg, #ff6ad5, #ffd400); }
+  .ticket.free { background: linear-gradient(#e2c8ff, #b07cff); }
+  .ticket.busy { background: linear-gradient(#ff8ad8, #c22ba1); }
+  .ticket.done { background: linear-gradient(#9dff7a, #2fbf2f); }
+  .ticket.locked { background: linear-gradient(#8f84a8, #5c5272); }
+  .ticket .btn { font-size: 16px; padding: 7px 12px 2px; }
+
+  /* ============ C: SPELLBOOK ============ */
+  .C { width: 760px; background-color: #5b1fb5; }
+  .C .board { background: linear-gradient(#ff8ae0, #d4127f); }
+  .book { display: grid; grid-template-columns: 1fr 1fr; border: 5px solid #000; box-shadow: 0 6px 0 #000; }
+  .page { background: linear-gradient(#fff2c9, #ffd98a); padding: 16px; min-height: 380px; position: relative; }
+  .page + .page { border-left: 6px solid #000; }
+  .page h3 { margin: 0 0 10px; font-size: 22px; color: #fff; }
+  .rune { display: flex; align-items: center; gap: 10px; border: 4px solid #000; box-shadow: 0 4px 0 #000; padding: 8px 10px; margin-bottom: 10px; }
+  .rune .s { width: 40px; height: 40px; border: 3px solid #000; display: flex; align-items: center; justify-content: center; font-size: 22px; background: #fff; }
+  .rune .t1 { font-size: 17px; }
+  .rune .t2 { font-size: 12px; margin-top: 2px; }
+  .rune.free { background: linear-gradient(#d6b3ff, #9b4dff); }
+  .rune.busy { background: linear-gradient(#ff8ad8, #c22ba1); }
+  .rune.done { background: linear-gradient(#9dff7a, #2fbf2f); }
+  .rune.locked { background: linear-gradient(#8f84a8, #5c5272); }
+  .bigorb { width: 170px; height: 170px; margin: 6px auto 12px; border-radius: 50%; border: 5px solid #000; background: radial-gradient(#fff 20%, #ffd1ef 55%, #ff6ad5); box-shadow: 0 0 30px 10px #ff6ad588; display: flex; align-items: center; justify-content: center; font-size: 80px; }
+  .chips { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-bottom: 10px; }
+  .chip { border: 3px solid #000; padding: 4px 8px 1px; font-size: 13px; }
+  .chip.g { background: #36c41a; } .chip.b { background: #ff2a2a; }
+
+  .notes { max-width: 1100px; margin: 0 auto 60px; background: #fff8e6; border: 5px solid #000; box-shadow: 0 7px 0 #000; padding: 16px 22px; color: #1b1b1b; font-family: sans-serif; font-weight: 700; font-size: 15px; line-height: 1.5; }
+  .notes b { font-family: 'Luckiest Guy'; font-weight: normal; font-size: 17px; }
+</style>
+</head>
+<body>
+<h1 class="ol">ENCHANT MENU IDEAS</h1>
+<div class="sub ol2">Square hard edges + studs, like the new HUD buttons. Screen 1 (slots) shown; screen 2 keeps the same style.</div>
+
+<div class="row">
+
+  <!-- A -->
+  <div>
+    <div class="label ol2">A: CRYSTAL ALTARS<small class="ol1">5 tall altars side by side. The orb glows while it works.</small></div>
+    <div class="w A studs">
+      <div class="hdr"><div class="board ol">ENCHANT</div></div>
+      <div class="pill ol2 pink" style="right:82px">500 SHARDS</div>
+      <div class="x ol2">X</div>
+      <div class="inner">
+        <div class="altar free"><span class="num ol1">1</span><div class="orb">✨</div><div class="t ol1">TAP TO ENCHANT</div></div>
+        <div class="altar busy"><span class="num ol1">2</span><div class="orb">🗡️</div><div class="timer ol2">07:42</div><span class="btn teal ol1" style="font-size:13px;padding:5px 8px 1px">SKIP R$</span></div>
+        <div class="altar done"><span class="num ol1">3</span><div class="orb">🐧</div><div class="t ol1">READY!</div><span class="btn gold ol1" style="font-size:13px;padding:5px 8px 1px">COLLECT</span></div>
+        <div class="altar locked"><span class="num ol1">4</span><div class="orb">🔒</div><div class="t ol1">LOCKED</div><span class="btn teal ol1" style="font-size:13px;padding:5px 8px 1px">R$ 49</span></div>
+        <div class="altar locked"><span class="num ol1">5</span><div class="orb">🔒</div><div class="t ol1">LOCKED</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B -->
+  <div>
+    <div class="label ol2">B: SLOT TICKETS<small class="ol1">Your current list, polished. Progress bar on busy slots.</small></div>
+    <div class="w B studs">
+      <div class="hdr"><div class="board ol">ENCHANT</div></div>
+      <div class="pill ol2 pink" style="right:82px">500 SHARDS</div>
+      <div class="x ol2">X</div>
+      <div class="inner">
+        <div class="ticket free"><div class="n ol2">1</div><div class="ic">✨</div><div class="mid"><div class="t1 ol2">EMPTY SLOT</div><div class="t2 ol1">TAP TO PICK AN ITEM</div></div><span class="btn green ol1">ENCHANT</span></div>
+        <div class="ticket busy"><div class="n ol2">2</div><div class="ic">🗡️</div><div class="mid"><div class="t1 ol2">IRON CLUB</div><div class="bar"><i style="width:35%"></i></div></div><span class="btn teal ol1">SKIP R$</span></div>
+        <div class="ticket done"><div class="n ol2">3</div><div class="ic">🐧</div><div class="mid"><div class="t1 ol2">LAVA PENGUIN</div><div class="t2 ol1">READY TO COLLECT!</div></div><span class="btn gold ol1">COLLECT</span></div>
+        <div class="ticket locked"><div class="n ol2">4</div><div class="ic">🔒</div><div class="mid"><div class="t1 ol2">LOCKED</div></div><span class="btn teal ol1">R$ 49</span></div>
+        <div class="ticket locked"><div class="n ol2">5</div><div class="ic">🔒</div><div class="mid"><div class="t1 ol2">LOCKED</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <div>
+    <div class="label ol2">C: SPELLBOOK<small class="ol1">Open book: slots on the left page, the chosen slot's item + result on the right.</small></div>
+    <div class="w C studs">
+      <div class="hdr"><div class="board ol">ENCHANT</div></div>
+      <div class="pill ol2 gold" style="right:82px">500 SHARDS</div>
+      <div class="x ol2">X</div>
+      <div class="book">
+        <div class="page">
+          <h3 class="ol2">SLOTS</h3>
+          <div class="rune free"><div class="s">✨</div><div><div class="t1 ol1">1 · EMPTY</div><div class="t2 ol1">TAP TO ENCHANT</div></div></div>
+          <div class="rune busy"><div class="s">🗡️</div><div><div class="t1 ol1">2 · IRON CLUB</div><div class="t2 ol1">07:42 LEFT</div></div></div>
+          <div class="rune done"><div class="s">🐧</div><div><div class="t1 ol1">3 · READY!</div><div class="t2 ol1">TAP TO COLLECT</div></div></div>
+          <div class="rune locked"><div class="s">🔒</div><div><div class="t1 ol1">4 · LOCKED</div><div class="t2 ol1">R$ 49</div></div></div>
+          <div class="rune locked"><div class="s">🔒</div><div><div class="t1 ol1">5 · LOCKED</div></div></div>
+        </div>
+        <div class="page">
+          <h3 class="ol2">SLOT 3 · READY</h3>
+          <div class="bigorb">🐧</div>
+          <div class="chips"><span class="chip g ol1">MONEY HUNGRY II</span><span class="chip b ol1">LAZY</span></div>
+          <div style="text-align:center"><span class="btn gold ol2" style="font-size:22px">COLLECT</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="notes">
+  <b>All three:</b> square hard edges + studs like the new HUD buttons, brighter purple/pink/green, white Golph text with black outlines. Locked slots just say <b>LOCKED</b> with a small Robux price button (no overlap on hover). Emojis stand in for the real 3D models / club icons.<br>
+  <b>A</b> is the most "magic" (glowing orbs per slot). <b>B</b> is closest to what's in game now, just nicer and with a progress bar. <b>C</b> fits both screens into one book and feels the most special, but it's the biggest change.
+</div>
+</body>
+</html>
