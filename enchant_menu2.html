@@ -22,6 +22,20 @@
     --btn1: #ff7ad0; --btn2: #e0158a;
     --pill1: #fff06a; --pill2: #ffb300;
   }
+  body.purple {
+    --win: #9b3bff; --win2: #6a12d6;
+    --inner1: #d9a6ff; --inner2: #a855ff;
+    --board1: #fff06a; --board2: #ffb300;
+    --free1: #e6c8ff; --free2: #b56bff; --freeOrb: #f6ecff; --freeGlow: #e0a8ff;
+    --busy1: #ffd36a; --busy2: #ff8a00; --busyOrb: #fff6d6; --busyGlow: #ffd24a;
+    --done1: #a6ff5a; --done2: #29c21a; --doneOrb: #eaffd6; --doneGlow: #b7ff7a;
+    --lock1: #a493b8; --lock2: #67567d; --lockOrb: #33284a;
+    --page1: #f7eeff; --page2: #dcc0ff; --spine: #6a12d6;
+    --card1: #c27aff; --card2: #8a2be2;
+    --sel: #fff06a;
+    --btn1: #5cf5d8; --btn2: #0bb59a;
+    --pill1: #fff06a; --pill2: #ffb300;
+  }
   body.green {
     --win: #2fbf2f; --win2: #168a16;
     --inner1: #b6ff7a; --inner2: #4fd62a;
@@ -60,6 +74,7 @@
   .switch button { font-family: 'Luckiest Guy'; font-size: 20px; color: #fff; border: 4px solid #000; padding: 9px 16px 4px; box-shadow: 0 4px 0 #000; cursor: pointer; -webkit-text-stroke: 1.5px #000; paint-order: stroke fill; }
   .switch .b1 { background: linear-gradient(#5cc8ff, #1e7bff); }
   .switch .b2 { background: linear-gradient(#8ef05a, #2fbf2f); }
+  .switch .b4 { background: linear-gradient(#c27aff, #8a2be2); }
   .switch .b3 { background: linear-gradient(#ffb35c, #ff6a1f); }
   .switch button.on { outline: 5px solid #fff; outline-offset: 2px; }
   .row { display: flex; flex-wrap: wrap; gap: 90px 50px; justify-content: center; padding: 0 30px 70px; align-items: flex-start; }
@@ -134,6 +149,7 @@
 <div class="sub ol2">Screen 1 = Crystal Altars. Click a free altar to open the Spellbook with your inventory inside. Try the colour themes:</div>
 <div class="switch">
   <button class="b1 on" data-t="">OCEAN MAGIC</button>
+  <button class="b4" data-t="purple">ROYAL PURPLE</button>
   <button class="b2" data-t="green">GOLPH GREEN</button>
   <button class="b3" data-t="sunset">SUNSET</button>
 </div>
@@ -192,7 +208,7 @@
 
 <div class="notes">
   <b>Same in every theme:</b> square hard edges, stud texture, glossy top on altars, white Golph text with black outlines. Emojis stand in for the real 3D models / club icons.<br>
-  <b>Ocean Magic</b> = bright blue + cyan + gold. <b>Golph Green</b> = matches the grass and the HUD. <b>Sunset</b> = orange + pink + gold.<br>
+  <b>Ocean Magic</b> = bright blue + cyan + gold. <b>Royal Purple</b> = bright purple + gold + teal ENCHANT button. <b>Golph Green</b> = matches the grass and the HUD. <b>Sunset</b> = orange + pink + gold.<br>
   Tell me a theme (or mix, e.g. "Ocean altars with Sunset book") and I'll build it.
 </div>
 <script>
