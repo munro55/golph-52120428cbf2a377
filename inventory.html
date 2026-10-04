@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Golph Inventory mockups</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #6cc04a; background-image: radial-gradient(rgba(255,255,255,.13) 3px, transparent 4px); background-size: 22px 22px; font-family: 'Luckiest Guy'; color: #fff; letter-spacing: .4px; }
+  .ol { -webkit-text-stroke: 3px #000; paint-order: stroke fill; }
+  .ol2 { -webkit-text-stroke: 2px #000; paint-order: stroke fill; }
+  .ol1 { -webkit-text-stroke: 1.2px #000; paint-order: stroke fill; }
+  h1 { text-align: center; font-size: 50px; margin: 24px 0 2px; }
+  .sub { text-align: center; font-size: 18px; margin: 0 auto 40px; max-width: 900px; }
+  .row { display: flex; flex-wrap: wrap; gap: 80px 60px; justify-content: center; padding: 0 30px 90px; align-items: flex-start; }
+  .label { text-align: center; font-size: 30px; margin-bottom: 46px; }
+  .label small { display: block; font-size: 16px; margin-top: 4px; color: #fff7c2; }
+
+  /* shared window */
+  .stack { position: relative; }
+  .w { position: relative; border-radius: 28px; border: 6px solid #000; padding: 50px 14px 14px;
+       background-color: #ff9a2e;
+       background-image: radial-gradient(circle at 50% 45%, rgba(255,255,255,.2) 0 22%, rgba(0,0,0,.10) 23% 30%, transparent 31%);
+       background-size: 22px 22px; box-shadow: 0 10px 0 #000, inset 0 6px 0 rgba(255,255,255,.25); }
+  .w.blue { background-color: #2fb4e0; }
+  .w.purple { background-color: #9b6bff; }
+  .hdr { position: absolute; z-index: 2; left: -26px; top: -36px; height: 70px; }
+  .board { height: 100%; border-radius: 22px; border: 6px solid #000; display: flex; align-items: center; gap: 10px; padding: 6px 26px 0 18px;
+           background: linear-gradient(#ffe46a, #ffbf1f 60%, #e9a10a); box-shadow: 0 6px 0 #000, inset 0 6px 0 rgba(255,255,255,.4); font-size: 36px; }
+  .board.green { background: linear-gradient(#b8ff8a, #6fdc3c 60%, #4cb526); }
+  .x { position: absolute; z-index: 3; right: 14px; top: -26px; width: 52px; height: 52px; border-radius: 14px; background: #ff3b3b; border: 5px solid #000; box-shadow: 0 5px 0 #000; font-size: 26px; text-align: center; line-height: 50px; }
+  .count { position: absolute; z-index: 3; right: 80px; top: -22px; background: #8be85f; border: 5px solid #000; border-radius: 14px; padding: 8px 14px 2px; font-size: 20px; box-shadow: 0 4px 0 #000; }
+  .count.full { background: #ff5a5a; }
+  .inner { background: rgba(255,251,234,.92); border: 5px solid #000; border-radius: 18px; overflow: hidden; }
+  .hint { font-size: 14px; color: #fff; text-align: center; margin: 10px 0 2px; }
+
+  /* rarity colours */
+  .r1 { --rc: #c8c8c8; } .r2 { --rc: #5ac85a; } .r3 { --rc: #468cff; } .r4 { --rc: #aa50ff; }
+  .r5 { --rc: #ffb41e; } .r6 { --rc: #ff3c5a; } .r7 { --rc: #ff5fa2; }
+  .pill { display: inline-block; font-size: 12px; padding: 4px 8px 1px; border: 3px solid #000; border-radius: 9px; background: var(--rc); }
+  .r7 .pill, .pill.secret { background: linear-gradient(90deg, #ff5fa2, #ffe14d, #7dff5a, #5cc8ff, #b06bff); }
+
+  /* buttons */
+  .b { display: inline-flex; align-items: center; justify-content: center; border: 4px solid #000; border-radius: 13px; box-shadow: 0 4px 0 #000; padding: 7px 12px 2px; font-size: 18px; }
+  .b.place { background: linear-gradient(#a6f56a, #4cc22a); }
+  .b.sell { background: linear-gradient(#ff8a8a, #ff3b3b); }
+  .b.gray { background: #b9b9c4; color: #fff; }
+  .b.yellow { background: linear-gradient(#ffe46a, #ffbf1f); }
+
+  /* ================= A: tile grid + side detail ================= */
+  .A { width: 820px; }
+  .A .body { display: flex; gap: 12px; }
+  .A .grid { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 14px 18px 14px 14px; height: 470px; overflow: hidden; position: relative; }
+  .A .grid::after { content: ""; position: absolute; right: 4px; top: 12px; width: 9px; height: 150px; border-radius: 6px; background: rgba(0,0,0,.3); }
+  .tile { aspect-ratio: 1 / 1.12; border: 4px solid #000; border-radius: 14px; background: #fffbea; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 0 #000; }
+  .tile .e { font-size: 44px; line-height: 1; margin-top: 4px; }
+  .tile .n { font-size: 12px; margin-top: 4px; text-align: center; line-height: 1; padding: 0 3px; }
+  .tile .kg { position: absolute; top: 4px; left: 6px; font-size: 11px; color: #000; }
+  .tile .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 9px; border-radius: 0 0 10px 10px; background: var(--rc); border-top: 3px solid #000; }
+  .tile.r7 { background: linear-gradient(#3a2f5c, #120f1e); }
+  .tile.r7 .bar { background: linear-gradient(90deg, #ff5fa2, #ffe14d, #7dff5a, #5cc8ff, #b06bff); }
+  .tile.sel { outline: 5px solid #ffe14d; outline-offset: 2px; }
+  .tile.empty { background: rgba(0,0,0,.08); border-style: dashed; box-shadow: none; }
+  .A .side { width: 250px; border-left: 5px solid #000; background: #fff3c4; padding: 14px 12px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .A .side .big { width: 170px; height: 150px; border: 4px solid #000; border-radius: 16px; background: radial-gradient(#fff, #ffe8a8); display: flex; align-items: center; justify-content: center; font-size: 96px; }
+  .A .side .nm { font-size: 24px; text-align: center; line-height: 1; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; width: 100%; }
+  .stats div { background: #fff; border: 3px solid #000; border-radius: 10px; padding: 6px 0 2px; text-align: center; font-size: 11px; color: #555; }
+  .stats b { display: block; font-size: 17px; color: #16a34a; }
+  .ench { display: flex; gap: 6px; justify-content: center; }
+  .ench span { width: 40px; height: 40px; border: 3px dashed #000; border-radius: 10px; background: rgba(0,0,0,.08); }
+  .ench span.f { border-style: solid; background: linear-gradient(#c79bff, #8a4dff); }
+  .A .side .btns { display: flex; gap: 8px; width: 100%; margin-top: auto; }
+  .A .side .btns .b { flex: 1; }
+
+  /* ================= B: big cards ================= */
+  .B { width: 760px; }
+  .tabs { display: flex; gap: 8px; padding: 12px 14px 4px; }
+  .tab { font-size: 14px; padding: 6px 12px 2px; border: 4px solid #000; border-radius: 12px; background: #fff; color: #000; box-shadow: 0 3px 0 #000; }
+  .tab.on { background: #ffe14d; }
+  .tab.r { margin-left: auto; }
+  .B .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding: 12px 20px 16px 14px; height: 470px; overflow: hidden; position: relative; }
+  .B .cards::after { content: ""; position: absolute; right: 5px; top: 14px; width: 9px; height: 140px; border-radius: 6px; background: rgba(0,0,0,.3); }
+  .card { border: 5px solid #000; border-radius: 18px; background: #fff; box-shadow: 0 5px 0 #000; overflow: hidden; display: flex; flex-direction: column; }
+  .card .top { background: var(--rc); border-bottom: 4px solid #000; padding: 6px 8px 2px; display: flex; justify-content: space-between; font-size: 13px; }
+  .card.r7 .top { background: linear-gradient(90deg, #ff5fa2, #ffe14d, #7dff5a, #5cc8ff, #b06bff); }
+  .card .pic { height: 110px; display: flex; align-items: center; justify-content: center; font-size: 72px; background: radial-gradient(#fff 30%, #f3ecd2); }
+  .card .nm { font-size: 18px; text-align: center; padding: 4px 6px 0; line-height: 1.05; }
+  .card .info { display: flex; justify-content: center; gap: 10px; font-size: 13px; color: #000; padding: 4px 0 6px; }
+  .card .info .money { color: #16a34a; }
+  .card .btns { display: flex; gap: 6px; padding: 0 8px 8px; }
+  .card .btns .b { flex: 1; font-size: 15px; padding: 6px 4px 1px; }
+
+  /* ================= C: list rows ================= */
+  .C { width: 640px; }
+  .C .list { display: flex; flex-direction: column; gap: 10px; padding: 14px 20px 14px 14px; height: 440px; overflow: hidden; position: relative; }
+  .C .list::after { content: ""; position: absolute; right: 5px; top: 14px; width: 9px; height: 140px; border-radius: 6px; background: rgba(0,0,0,.3); }
+  .lrow { display: flex; align-items: center; gap: 12px; border: 5px solid #000; border-radius: 18px; padding: 8px 10px; box-shadow: 0 5px 0 #000;
+          background: linear-gradient(90deg, var(--rc) 0 14px, #fff 14px); }
+  .lrow .pic { width: 66px; height: 66px; border: 4px solid #000; border-radius: 14px; background: radial-gradient(#fff, #f3ecd2); display: flex; align-items: center; justify-content: center; font-size: 40px; flex: none; margin-left: 8px; }
+  .lrow .mid { flex: 1; }
+  .lrow .nm { font-size: 21px; line-height: 1; }
+  .lrow .meta { font-size: 13px; color: #000; margin-top: 5px; display: flex; gap: 8px; align-items: center; }
+  .lrow .meta .money { color: #16a34a; }
+  .lrow .btns { display: flex; gap: 6px; }
+  .lrow .btns .b { font-size: 15px; padding: 6px 10px 1px; }
+  .lrow.r7 { background: linear-gradient(90deg, #ff5fa2 0 4px, #ffe14d 4px 7px, #7dff5a 7px 10px, #5cc8ff 10px 14px, #2a2140 14px); }
+  .lrow.r7 .meta { color: #fff; }
+  .C .foot { display: flex; gap: 10px; padding: 0 14px 14px; }
+  .C .foot .b { flex: 1; font-size: 16px; }
+
+  .notes { max-width: 1100px; margin: 0 auto 60px; background: #fff8e6; border: 5px solid #000; border-radius: 22px; box-shadow: 0 7px 0 #000; padding: 16px 22px; color: #1b1b1b; font-family: sans-serif; font-weight: 700; font-size: 15px; line-height: 1.45; }
+  .notes b { font-family: 'Luckiest Guy'; font-weight: normal; font-size: 17px; }
+</style>
+</head>
+<body>
+<h1 class="ol">GOLPH INVENTORY MOCKUPS</h1>
+<div class="sub ol2">Same style as the Shop, Rebirth and Index. Emojis stand in for the real 3D animal models.</div>
+
+<div class="row">
+
+  <!-- ================= A ================= -->
+  <div>
+    <div class="label ol2">A: GRID + DETAIL PANEL<small class="ol1">Like the Index. Click a tile, act on the right.</small></div>
+    <div class="stack A">
+      <div class="w">
+        <div class="hdr"><div class="board ol">🎒 INVENTORY</div></div>
+        <div class="count ol2">12 / 20</div>
+        <div class="x ol2">X</div>
+        <div class="inner body">
+          <div class="grid">
+            <div class="tile r5 sel"><span class="kg">14 KG</span><span class="e">🦁</span><span class="n ol1">SANDY LION</span><span class="bar"></span></div>
+            <div class="tile r3"><span class="kg">6 KG</span><span class="e">🦊</span><span class="n ol1">FOX</span><span class="bar"></span></div>
+            <div class="tile r1"><span class="kg">2 KG</span><span class="e">🐥</span><span class="n ol1">CHICK</span><span class="bar"></span></div>
+            <div class="tile r6"><span class="kg">23 KG</span><span class="e">🐉</span><span class="n ol1">POND DRAGON</span><span class="bar"></span></div>
+            <div class="tile r2"><span class="kg">3 KG</span><span class="e">🐷</span><span class="n ol1">PIGLET</span><span class="bar"></span></div>
+            <div class="tile r4"><span class="kg">9 KG</span><span class="e">🐧</span><span class="n ol1">PENGUIN</span><span class="bar"></span></div>
+            <div class="tile r7"><span class="kg" style="color:#fff">41 KG</span><span class="e">🦀</span><span class="n ol1">KING CRABBY</span><span class="bar"></span></div>
+            <div class="tile r1"><span class="kg">2 KG</span><span class="e">🐰</span><span class="n ol1">BUNNY</span><span class="bar"></span></div>
+            <div class="tile r3"><span class="kg">5 KG</span><span class="e">🐼</span><span class="n ol1">PANDA</span><span class="bar"></span></div>
+            <div class="tile r2"><span class="kg">3 KG</span><span class="e">🐶</span><span class="n ol1">PUPPY</span><span class="bar"></span></div>
+            <div class="tile r5"><span class="kg">12 KG</span><span class="e">🦅</span><span class="n ol1">EAGLE</span><span class="bar"></span></div>
+            <div class="tile r1"><span class="kg">2 KG</span><span class="e">🐸</span><span class="n ol1">FROG</span><span class="bar"></span></div>
+            <div class="tile empty"></div><div class="tile empty"></div><div class="tile empty"></div><div class="tile empty"></div>
+          </div>
+          <div class="side r5">
+            <div class="big">🦁</div>
+            <div class="nm ol2">SANDY LION</div>
+            <span class="pill ol1">LEGENDARY</span>
+            <div class="stats">
+              <div>WEIGHT<b>14 KG</b></div>
+              <div>FROM<b>ZONE 7</b></div>
+              <div>INCOME<b>$120/S</b></div>
+              <div>SELLS FOR<b>$8.4K</b></div>
+            </div>
+            <div class="ench"><span></span></div>
+            <div class="btns"><span class="b place ol2">PLACE</span><span class="b sell ol2">SELL</span></div>
+          </div>
+        </div>
+        <div class="hint ol1">Animals here earn nothing. Place them on your plot to earn.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= B ================= -->
+  <div>
+    <div class="label ol2">B: BIG CARDS<small class="ol1">Everything on the card. Sort tabs on top.</small></div>
+    <div class="stack B">
+      <div class="w blue">
+        <div class="hdr"><div class="board green ol">🎒 INVENTORY</div></div>
+        <div class="count ol2">12 / 20</div>
+        <div class="x ol2">X</div>
+        <div class="inner">
+          <div class="tabs"><span class="tab on">RARITY</span><span class="tab">KG</span><span class="tab">VALUE</span><span class="tab">NEWEST</span></div>
+          <div class="cards">
+            <div class="card r7"><div class="top ol1"><span>SECRET</span><span>41 KG</span></div><div class="pic">🦀</div><div class="nm ol2">KING CRABBY</div><div class="info"><span>ZONE 9</span><span class="money">$71K</span></div><div class="btns"><span class="b place ol2">PLACE</span><span class="b sell ol2">SELL</span></div></div>
+            <div class="card r6"><div class="top ol1"><span>MYTHIC</span><span>23 KG</span></div><div class="pic">🐉</div><div class="nm ol2">POND DRAGON</div><div class="info"><span>ZONE 12</span><span class="money">$33K</span></div><div class="btns"><span class="b place ol2">PLACE</span><span class="b sell ol2">SELL</span></div></div>
+            <div class="card r5"><div class="top ol1"><span>LEGENDARY</span><span>14 KG</span></div><div class="pic">🦁</div><div class="nm ol2">SANDY LION</div><div class="info"><span>ZONE 7</span><span class="money">$8.4K</span></div><div class="btns"><span class="b place ol2">PLACE</span><span class="b sell ol2">SELL</span></div></div>
+            <div class="card r5"><div class="top ol1"><span>LEGENDARY</span><span>12 KG</span></div><div class="pic">🦅</div><div class="nm ol2">EAGLE</div><div class="info"><span>ZONE 3</span><span class="money">$4.1K</span></div><div class="btns"><span class="b place ol2">PLACE</span><span class="b sell ol2">SELL</span></div></div>
+            <div class="card r4"><div class="top ol1"><span>EPIC</span><span>9 KG</span></div><div class="pic">🐧</div><div class="nm ol2">PENGUIN</div><div class="info"><span>ZONE 4</span><span class="money">$1.9K</span></div><div class="btns"><span class="b place ol2">PLACE</span><span class="b sell ol2">SELL</span></div></div>
+            <div class="card r3"><div class="top ol1"><span>RARE</span><span>6 KG</span></div><div class="pic">🦊</div><div class="nm ol2">FOX</div><div class="info"><span>ZONE 2</span><span class="money">$640</span></div><div class="btns"><span class="b place ol2">PLACE</span><span class="b sell ol2">SELL</span></div></div>
+          </div>
+        </div>
+        <div class="hint ol1">Animals here earn nothing. Place them on your plot to earn.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= C ================= -->
+  <div>
+    <div class="label ol2">C: LIST ROWS<small class="ol1">Like the Index area list. Quick bulk buttons at the bottom.</small></div>
+    <div class="stack C">
+      <div class="w purple">
+        <div class="hdr"><div class="board ol">🎒 INVENTORY</div></div>
+        <div class="count full ol2">20 / 20</div>
+        <div class="x ol2">X</div>
+        <div class="inner">
+          <div class="list">
+            <div class="lrow r7"><div class="pic">🦀</div><div class="mid"><div class="nm ol2">KING CRABBY</div><div class="meta"><span class="pill ol1">SECRET</span><span>41 KG</span><span class="money">$71K</span></div></div><div class="btns"><span class="b place ol2">PLACE</span><span class="b sell ol2">SELL</span></div></div>
+            <div class="lrow r6"><div class="pic">🐉</div><div class="mid"><div class="nm ol2">POND DRAGON</div><div class="meta"><span class="pill ol1">MYTHIC</span><span>23 KG</span><span class="money">$33K</span></div></div><div class="btns"><span class="b place ol2">PLACE</span><span class="b sell ol2">SELL</span></div></div>
+            <div class="lrow r5"><div class="pic">🦁</div><div class="mid"><div class="nm ol2">SANDY LION</div><div class="meta"><span class="pill ol1">LEGENDARY</span><span>14 KG</span><span class="money">$8.4K</span></div></div><div class="btns"><span class="b place ol2">PLACE</span><span class="b sell ol2">SELL</span></div></div>
+            <div class="lrow r4"><div class="pic">🐧</div><div class="mid"><div class="nm ol2">PENGUIN</div><div class="meta"><span class="pill ol1">EPIC</span><span>9 KG</span><span class="money">$1.9K</span></div></div><div class="btns"><span class="b place ol2">PLACE</span><span class="b sell ol2">SELL</span></div></div>
+            <div class="lrow r3"><div class="pic">🦊</div><div class="mid"><div class="nm ol2">FOX</div><div class="meta"><span class="pill ol1">RARE</span><span>6 KG</span><span class="money">$640</span></div></div><div class="btns"><span class="b place ol2">PLACE</span><span class="b sell ol2">SELL</span></div></div>
+            <div class="lrow r1"><div class="pic">🐥</div><div class="mid"><div class="nm ol2">CHICK</div><div class="meta"><span class="pill ol1">COMMON</span><span>2 KG</span><span class="money">$40</span></div></div><div class="btns"><span class="b place ol2">PLACE</span><span class="b sell ol2">SELL</span></div></div>
+          </div>
+          <div class="foot"><span class="b yellow ol2">PLACE ALL</span><span class="b sell ol2">SELL ALL COMMONS</span></div>
+        </div>
+        <div class="hint ol1">Inventory full! Place or sell animals to pick up more.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="notes">
+  <b>What's the same in all three:</b> real 3D animal models instead of the emojis, rarity colours from the game, "12 / 20" slot counter (turns red when full), PLACE puts it back on your plot, SELL shows the price first. No bobbing or pulsing, and hover grows from the centre.<br>
+  <b>A</b> fits the most animals on screen and has room for the animal's enchant slots (the empty dashed box) once animal enchants are in.<br>
+  <b>B</b> is the easiest to read on mobile, and the sort tabs help when the inventory gets big.<br>
+  <b>C</b> is the fastest for selling lots of animals, with bulk buttons at the bottom. Window colours (orange / blue / purple) can be swapped between any of them.
+</div>
+</body>
+</html>
