@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -24,6 +24,7 @@
   .yours > h2 { background: #ff7ad0; }
   .ideas > h2 { background: #ff9f1c; }
   .rules > h2 { background: #4aa3ff; }
+  .shop > h2 { background: #2fbf4a; }
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   @media (max-width: 820px) { .grid { grid-template-columns: 1fr; } }
 
@@ -39,6 +40,7 @@
   .pill.src { background: #2fbf4a; }
   .pill.rbx { background: #e0158a; }
   .pill.warn { background: #ff9f1c; }
+  .pill.rbx { background: #e0158a; }
   .why { display: block; font-weight: 800; font-size: 13px; color: #6a5a2a; margin-top: 5px; }
   .btns { display: flex; flex-direction: column; gap: 6px; justify-content: center; }
   .btns button { font-family: 'Luckiest Guy'; font-size: 15px; color: #fff; -webkit-text-stroke: 1px #000; paint-order: stroke fill; border: 3px solid #000; padding: 7px 10px 3px; cursor: pointer; box-shadow: 0 3px 0 #000; min-width: 84px; }
@@ -78,44 +80,44 @@
       <div class="card" data-id="Mutation Luck" style="--c:#b07cff"><div class="icon">🍀</div><div class="body">
         <div class="name">Mutation Luck</div>
         <div class="desc">2x mutation chance. Size 3% → 6%, modifier 2% → 4%.</div>
-        <div class="meta"><span class="pill dur">15 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+        <div class="meta"><span class="pill dur">15 MIN</span><span class="pill src">SHOP / DROPS</span><span class="pill rbx">+ R$</span></div>
       </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
 
       <div class="card" data-id="Guaranteed Modifier" style="--c:#ffd23a"><div class="icon">✨</div><div class="body">
         <div class="name">Guaranteed Modifier</div>
         <div class="desc">Every egg you break hatches with a modifier mutation (Golden, Acid, Frozen...).</div>
-        <div class="meta"><span class="pill dur">NEXT 3 EGGS</span><span class="pill rbx">ROBUX</span><span class="pill warn">VERY STRONG</span></div>
-        <span class="why">Charges, not a timer, so it can't be farmed in a long session.</span>
+        <div class="meta"><span class="pill dur">1 MIN</span><span class="pill src">SHOP / DROPS</span><span class="pill rbx">+ R$</span><span class="pill warn">VERY STRONG</span></div>
+        <span class="why">Only 1 minute, so it can't be farmed in a long session.</span>
       </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
 
       <div class="card" data-id="Guaranteed Size" style="--c:#ff7a3a"><div class="icon">📏</div><div class="body">
         <div class="name">Guaranteed Size</div>
         <div class="desc">Every egg you break hatches with a size mutation (Big, Huge or Massive).</div>
-        <div class="meta"><span class="pill dur">NEXT 3 EGGS</span><span class="pill rbx">ROBUX</span><span class="pill warn">VERY STRONG</span></div>
+        <div class="meta"><span class="pill dur">1 MIN</span><span class="pill src">SHOP / DROPS</span><span class="pill rbx">+ R$</span><span class="pill warn">VERY STRONG</span></div>
       </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
 
       <div class="card" data-id="Money" style="--c:#2fbf4a"><div class="icon">💸</div><div class="body">
         <div class="name">Money</div>
         <div class="desc">2x income from your plot.</div>
-        <div class="meta"><span class="pill dur">15 MIN</span><span class="pill src">SHOP / INDEX / DROPS</span></div>
+        <div class="meta"><span class="pill dur">15 MIN</span><span class="pill src">SHOP / INDEX / DROPS</span><span class="pill rbx">+ R$</span></div>
       </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
 
       <div class="card" data-id="Power" style="--c:#ff4d4d"><div class="icon">💥</div><div class="body">
         <div class="name">Power</div>
         <div class="desc">2x damage to eggs.</div>
-        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">SHOP / DROPS</span><span class="pill rbx">+ R$</span></div>
       </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
 
       <div class="card" data-id="Fast Swing" style="--c:#4aa3ff"><div class="icon">⚡</div><div class="body">
         <div class="name">Fast Swing</div>
         <div class="desc">2x shooting speed (half the reload time).</div>
-        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">SHOP / DROPS</span><span class="pill rbx">+ R$</span></div>
       </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
 
       <div class="card" data-id="Finders Keepers" style="--c:#c512c0"><div class="icon">🔒</div><div class="body">
         <div class="name">Finders Keepers</div>
         <div class="desc">Animals from eggs you break can only be picked up by you for 60 seconds (normally about 10s).</div>
-        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">SHOP / DROPS</span><span class="pill rbx">+ R$</span></div>
       </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
     </div>
   </div>
@@ -126,94 +128,107 @@
       <div class="card" data-id="Lucky" style="--c:#2fbf4a"><div class="icon">🎲</div><div class="body">
         <div class="name">Lucky</div>
         <div class="desc">Better rarity odds when eggs hatch (more Epic, Legendary, Mythic).</div>
-        <div class="meta"><span class="pill dur">15 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+        <div class="meta"><span class="pill dur">15 MIN</span><span class="pill src">SHOP / DROPS</span><span class="pill rbx">+ R$</span></div>
         <span class="why">The main progression lever. These sell really well.</span>
       </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
 
       <div class="card" data-id="Heavy" style="--c:#8a5a2b"><div class="icon">🏋️</div><div class="body">
         <div class="name">Heavy</div>
         <div class="desc">+50% KG on animals you hatch.</div>
-        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">SHOP / DROPS</span><span class="pill rbx">+ R$</span></div>
         <span class="why">KG drives both size and money.</span>
       </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
 
       <div class="card" data-id="Steady Hands" style="--c:#5cf5d8"><div class="icon">🎯</div><div class="body">
         <div class="name">Steady Hands</div>
         <div class="desc">Smaller aim circle, so shots land closer to where you click.</div>
-        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">COINS</span></div>
+        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">COINS</span><span class="pill rbx">+ R$</span></div>
       </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
 
       <div class="card" data-id="Long Shot" style="--c:#4aa3ff"><div class="icon">🔭</div><div class="body">
         <div class="name">Long Shot</div>
         <div class="desc">+2 zones of range. Try zones you haven't unlocked yet.</div>
-        <div class="meta"><span class="pill dur">5 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+        <div class="meta"><span class="pill dur">5 MIN</span><span class="pill src">SHOP / DROPS</span><span class="pill rbx">+ R$</span></div>
       </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
 
       <div class="card" data-id="Iron Skin" style="--c:#9aa3b5"><div class="icon">🛡️</div><div class="body">
         <div class="name">Iron Skin</div>
         <div class="desc">Can't be stunned or have your animals knocked loose.</div>
-        <div class="meta"><span class="pill dur">5 MIN</span><span class="pill rbx">ROBUX</span></div>
+        <div class="meta"><span class="pill dur">5 MIN</span><span class="pill src">SHOP / DROPS</span><span class="pill rbx">+ R$</span></div>
         <span class="why">Safe carrying in the zones. Short timer so it isn't too strong.</span>
       </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
 
       <div class="card" data-id="Sprint" style="--c:#ffd23a"><div class="icon">👟</div><div class="body">
         <div class="name">Sprint</div>
         <div class="desc">+50% walk speed.</div>
-        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">COINS</span></div>
+        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">COINS</span><span class="pill rbx">+ R$</span></div>
       </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
 
       <div class="card" data-id="Extra Hands" style="--c:#ff7ad0"><div class="icon">🙌</div><div class="body">
         <div class="name">Extra Hands</div>
         <div class="desc">+1 carry slot.</div>
-        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">SHOP / DROPS</span><span class="pill rbx">+ R$</span></div>
         <span class="why">A temporary taste of the +1 Pickup gamepass.</span>
       </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
 
       <div class="card" data-id="Egg Rain" style="--c:#6cc04a"><div class="icon">🥚</div><div class="body">
         <div class="name">Egg Rain</div>
         <div class="desc">More eggs spawn in the zones you shoot at.</div>
-        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">SHOP / DROPS</span><span class="pill rbx">+ R$</span></div>
       </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
 
       <div class="card" data-id="Big Eggs" style="--c:#ff9f1c"><div class="icon">🥚</div><div class="body">
         <div class="name">Big Eggs</div>
         <div class="desc">Higher chance of Huge and Massive eggs spawning.</div>
-        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">SHOP / DROPS</span><span class="pill rbx">+ R$</span></div>
       </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
 
       <div class="card" data-id="Shard Rush" style="--c:#9b3bff"><div class="icon">💎</div><div class="body">
         <div class="name">Shard Rush</div>
         <div class="desc">2x enchant shards.</div>
-        <div class="meta"><span class="pill dur">15 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+        <div class="meta"><span class="pill dur">15 MIN</span><span class="pill src">SHOP / DROPS</span><span class="pill rbx">+ R$</span></div>
       </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
 
       <div class="card" data-id="Quick Enchant" style="--c:#c27aff"><div class="icon">⏩</div><div class="body">
         <div class="name">Quick Enchant</div>
         <div class="desc">Enchant timers run 2x faster.</div>
-        <div class="meta"><span class="pill dur">30 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+        <div class="meta"><span class="pill dur">30 MIN</span><span class="pill src">SHOP / DROPS</span><span class="pill rbx">+ R$</span></div>
       </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
 
       <div class="card" data-id="Magnet" style="--c:#ff4d4d"><div class="icon">🧲</div><div class="body">
         <div class="name">Magnet</div>
         <div class="desc">Loose animals near you slide toward you, so they're easier to grab.</div>
-        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">COINS</span></div>
+        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">COINS</span><span class="pill rbx">+ R$</span></div>
       </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
 
       <div class="card" data-id="Server Luck" style="--c:#ffd23a"><div class="icon">🌟</div><div class="body">
         <div class="name">Server Luck</div>
         <div class="desc">Lucky + Mutation Luck for EVERYONE in the server, with a big announcement banner.</div>
-        <div class="meta"><span class="pill dur">30 MIN</span><span class="pill rbx">ROBUX</span></div>
+        <div class="meta"><span class="pill dur">30 MIN</span><span class="pill src">RARE DROP</span><span class="pill rbx">+ R$</span></div>
         <span class="why">Very popular in this genre: brings players together and people buy it to show off.</span>
       </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
     </div>
   </div>
 
+
+  <div class="board shop">
+    <h2>POTION SHOP</h2>
+    <div class="note"><b>Restocks every 10 minutes, on the clock:</b> xx:00, xx:10, xx:20... Every server uses the same real time (UTC), so all servers restock at the same moment, with a countdown in the shop.</div>
+    <div class="note"><b>Global stock:</b> each restock rolls which potions are in stock and how many. Better potions have lower odds of showing up and less stock. Stock is shared by every server, and the same restock shows the same items everywhere.</div>
+    <div class="note"><b>Coins or Robux:</b> every potion in stock can be bought with coins. Every potion can also be bought with Robux at any time, even when it's sold out.</div>
+    <div class="note"><b>Restock for 49 R$:</b> instantly rerolls the shop just for you, with a fresh personal stock until the next global restock.</div>
+    <div class="note"><b>Using a potion while one is already active:</b>
+      <br>&bull; <b>Same potion, same strength:</b> the time stacks (adds on).
+      <br>&bull; <b>A stronger one</b> (e.g. 3x Money while 2x Money is running): the stronger one takes over now, and the old one is saved with its remaining time. When the stronger one runs out, the saved one picks up where it left off.
+      <br>&bull; <b>A weaker one while a stronger one runs:</b> it's saved and starts once the stronger one ends.</div>
+    <div class="note"><b>Admin menu (F7):</b> set the stock of any potion, reroll the stock now (all servers), and give yourself any potion for testing.</div>
+  </div>
   <div class="board rules">
     <h2>HOW THEY'D WORK</h2>
-    <div class="note"><b>Stacking:</b> drinking the same potion again adds more time (or charges). Different potions all work at the same time.</div>
+    <div class="note"><b>Stacking:</b> the same potion stacks its time; a stronger one takes over and the old one waits (see Potion Shop above). Different potions all work at the same time.</div>
     <div class="note"><b>Timers</b> only count down while you're online, so nobody wastes a potion by leaving.</div>
     <div class="note"><b>HUD:</b> a row of small potion icons with countdowns above the hotbar.</div>
-    <div class="note"><b>Where to get them:</b> Robux shop, Index rewards, Group rewards, a rare drop from breaking eggs, and a coin shop for the weaker ones.</div>
+    <div class="note"><b>Where to get them:</b> every potion can be earned in-game: the coin Potion Shop (restocks every 10 minutes), rare drops from breaking eggs, Index rewards and Group rewards. Nothing is Robux-only.</div><div class="note"><b>+ R$ tag:</b> every potion can ALSO be bought with Robux in the shop, for players who don't want to wait for the Potion Shop to restock.</div>
     <div class="note"><b>Durations and sources</b> on each card are my suggestions. Tell me any you want changed.</div>
   </div>
 </div>
