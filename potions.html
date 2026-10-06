@@ -1,0 +1,256 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Golph Potions</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito:wght@700;800&display=swap');
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 28px 20px 60px;
+    background: #6cc04a;
+    background-image: radial-gradient(rgba(255,255,255,.13) 3px, transparent 4px);
+    background-size: 22px 22px;
+    font-family: 'Nunito', sans-serif; color: #1b1b1b;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; }
+  h1, h2, h3 { font-family: 'Luckiest Guy', cursive; letter-spacing: .5px; color: #fff; -webkit-text-stroke: 2px #000; paint-order: stroke fill; }
+  h1 { font-size: 54px; margin: 0 0 4px; text-align: center; -webkit-text-stroke: 3px #000; }
+  .sub { text-align: center; font-family: 'Luckiest Guy'; color: #fff; -webkit-text-stroke: 1.5px #000; paint-order: stroke fill; font-size: 20px; margin-bottom: 18px; }
+  .board { background: #fff8e6; border: 5px solid #000; box-shadow: 0 7px 0 #000; padding: 18px 20px 20px; margin: 44px 0 30px; }
+  .board > h2 { margin: -40px 0 12px; display: inline-block; padding: 6px 22px; border: 5px solid #000; font-size: 30px; box-shadow: 0 5px 0 #000; }
+  .yours > h2 { background: #ff7ad0; }
+  .ideas > h2 { background: #ff9f1c; }
+  .rules > h2 { background: #4aa3ff; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 820px) { .grid { grid-template-columns: 1fr; } }
+
+  .card { position: relative; display: flex; gap: 12px; align-items: stretch; background: #fff; border: 4px solid #000; padding: 10px; box-shadow: 0 4px 0 #000; transition: background .12s, box-shadow .12s, opacity .12s; }
+  .icon { width: 70px; height: 70px; flex: none; border: 4px solid #000; display: flex; align-items: center; justify-content: center; font-size: 38px;
+          background: radial-gradient(#fff 25%, rgba(255,255,255,.4)), var(--c, #b07cff); box-shadow: inset 0 -6px 0 rgba(0,0,0,.15); }
+  .body { flex: 1; min-width: 0; }
+  .name { font-family: 'Luckiest Guy'; font-size: 21px; color: #fff; -webkit-text-stroke: 1.5px #000; paint-order: stroke fill; line-height: 1.1; }
+  .desc { font-weight: 800; font-size: 15px; line-height: 1.3; margin-top: 2px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .pill { font-family: 'Luckiest Guy'; font-size: 12px; color: #fff; -webkit-text-stroke: .8px #000; paint-order: stroke fill; border: 2px solid #000; padding: 2px 7px 0; background: #7d8fa8; }
+  .pill.dur { background: #4aa3ff; }
+  .pill.src { background: #2fbf4a; }
+  .pill.rbx { background: #e0158a; }
+  .pill.warn { background: #ff9f1c; }
+  .why { display: block; font-weight: 800; font-size: 13px; color: #6a5a2a; margin-top: 5px; }
+  .btns { display: flex; flex-direction: column; gap: 6px; justify-content: center; }
+  .btns button { font-family: 'Luckiest Guy'; font-size: 15px; color: #fff; -webkit-text-stroke: 1px #000; paint-order: stroke fill; border: 3px solid #000; padding: 7px 10px 3px; cursor: pointer; box-shadow: 0 3px 0 #000; min-width: 84px; }
+  .btns button:active { transform: translateY(2px); box-shadow: 0 1px 0 #000; }
+  .acc { background: #2fbf4a; } .den { background: #ff4d4d; }
+  .card.accepted { background: #c9ffb8; box-shadow: 0 4px 0 #000, 0 0 0 4px #39e639, 0 0 16px 4px rgba(57,230,57,.6); }
+  .card.denied { background: #ffd3d3; opacity: .55; }
+  .card.accepted .acc, .card.denied .den { outline: 4px solid #fff; outline-offset: 1px; }
+  .stamp { position: absolute; top: -12px; right: -10px; font-family: 'Luckiest Guy'; font-size: 16px; color: #fff; -webkit-text-stroke: 1px #000; paint-order: stroke fill; border: 3px solid #000; padding: 4px 10px 1px; transform: rotate(6deg); display: none; }
+  .card.accepted .stamp { display: block; background: #2fbf4a; }
+  .card.denied .stamp { display: block; background: #ff4d4d; }
+
+  .pickbar { position: sticky; top: 10px; z-index: 5; display: flex; gap: 10px; justify-content: center; align-items: center; margin: 0 auto; width: fit-content; background: #fff; border: 4px solid #000; padding: 8px 14px; box-shadow: 0 5px 0 #000; font-family: 'Luckiest Guy'; font-size: 18px; }
+  .pickbar .n-acc { color: #1f9a35; } .pickbar .n-den { color: #d92b2b; } .pickbar .n-left { color: #7d8fa8; }
+  .pickbar button { font-family: 'Luckiest Guy'; font-size: 16px; color: #fff; -webkit-text-stroke: 1px #000; paint-order: stroke fill; border: 3px solid #000; padding: 6px 12px 3px; cursor: pointer; box-shadow: 0 3px 0 #000; }
+  .pickbar .copy { background: #2fbf4a; } .pickbar .clear { background: #ff4d4d; }
+
+  .note { background: #fff; border: 3px solid #000; padding: 9px 12px; margin-bottom: 8px; font-weight: 700; font-size: 15px; }
+  .note b { font-family: 'Luckiest Guy'; font-weight: normal; font-size: 17px; letter-spacing: .4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>GOLPH POTIONS</h1>
+  <div class="sub">Press ACCEPT or DENY on each potion. Then COPY MY PICKS and paste it to me.</div>
+  <div class="pickbar">
+    <span class="n-acc" id="nacc">0 ACCEPTED</span>
+    <span class="n-den" id="nden">0 DENIED</span>
+    <span class="n-left" id="nleft">0 LEFT</span>
+    <button class="copy" id="copy">COPY MY PICKS</button>
+    <button class="clear" id="clear">RESET</button>
+  </div>
+
+  <div class="board yours">
+    <h2>YOUR IDEAS</h2>
+    <div class="grid">
+      <div class="card" data-id="Mutation Luck" style="--c:#b07cff"><div class="icon">🍀</div><div class="body">
+        <div class="name">Mutation Luck</div>
+        <div class="desc">2x mutation chance. Size 3% → 6%, modifier 2% → 4%.</div>
+        <div class="meta"><span class="pill dur">15 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+      </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
+
+      <div class="card" data-id="Guaranteed Modifier" style="--c:#ffd23a"><div class="icon">✨</div><div class="body">
+        <div class="name">Guaranteed Modifier</div>
+        <div class="desc">Every egg you break hatches with a modifier mutation (Golden, Acid, Frozen...).</div>
+        <div class="meta"><span class="pill dur">NEXT 3 EGGS</span><span class="pill rbx">ROBUX</span><span class="pill warn">VERY STRONG</span></div>
+        <span class="why">Charges, not a timer, so it can't be farmed in a long session.</span>
+      </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
+
+      <div class="card" data-id="Guaranteed Size" style="--c:#ff7a3a"><div class="icon">📏</div><div class="body">
+        <div class="name">Guaranteed Size</div>
+        <div class="desc">Every egg you break hatches with a size mutation (Big, Huge or Massive).</div>
+        <div class="meta"><span class="pill dur">NEXT 3 EGGS</span><span class="pill rbx">ROBUX</span><span class="pill warn">VERY STRONG</span></div>
+      </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
+
+      <div class="card" data-id="Money" style="--c:#2fbf4a"><div class="icon">💸</div><div class="body">
+        <div class="name">Money</div>
+        <div class="desc">2x income from your plot.</div>
+        <div class="meta"><span class="pill dur">15 MIN</span><span class="pill src">SHOP / INDEX / DROPS</span></div>
+      </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
+
+      <div class="card" data-id="Power" style="--c:#ff4d4d"><div class="icon">💥</div><div class="body">
+        <div class="name">Power</div>
+        <div class="desc">2x damage to eggs.</div>
+        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+      </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
+
+      <div class="card" data-id="Fast Swing" style="--c:#4aa3ff"><div class="icon">⚡</div><div class="body">
+        <div class="name">Fast Swing</div>
+        <div class="desc">2x shooting speed (half the reload time).</div>
+        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+      </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
+
+      <div class="card" data-id="Finders Keepers" style="--c:#c512c0"><div class="icon">🔒</div><div class="body">
+        <div class="name">Finders Keepers</div>
+        <div class="desc">Animals from eggs you break can only be picked up by you for 60 seconds (normally about 10s).</div>
+        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+      </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
+    </div>
+  </div>
+
+  <div class="board ideas">
+    <h2>MY IDEAS</h2>
+    <div class="grid">
+      <div class="card" data-id="Lucky" style="--c:#2fbf4a"><div class="icon">🎲</div><div class="body">
+        <div class="name">Lucky</div>
+        <div class="desc">Better rarity odds when eggs hatch (more Epic, Legendary, Mythic).</div>
+        <div class="meta"><span class="pill dur">15 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+        <span class="why">The main progression lever. These sell really well.</span>
+      </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
+
+      <div class="card" data-id="Heavy" style="--c:#8a5a2b"><div class="icon">🏋️</div><div class="body">
+        <div class="name">Heavy</div>
+        <div class="desc">+50% KG on animals you hatch.</div>
+        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+        <span class="why">KG drives both size and money.</span>
+      </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
+
+      <div class="card" data-id="Steady Hands" style="--c:#5cf5d8"><div class="icon">🎯</div><div class="body">
+        <div class="name">Steady Hands</div>
+        <div class="desc">Smaller aim circle, so shots land closer to where you click.</div>
+        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">COINS</span></div>
+      </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
+
+      <div class="card" data-id="Long Shot" style="--c:#4aa3ff"><div class="icon">🔭</div><div class="body">
+        <div class="name">Long Shot</div>
+        <div class="desc">+2 zones of range. Try zones you haven't unlocked yet.</div>
+        <div class="meta"><span class="pill dur">5 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+      </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
+
+      <div class="card" data-id="Iron Skin" style="--c:#9aa3b5"><div class="icon">🛡️</div><div class="body">
+        <div class="name">Iron Skin</div>
+        <div class="desc">Can't be stunned or have your animals knocked loose.</div>
+        <div class="meta"><span class="pill dur">5 MIN</span><span class="pill rbx">ROBUX</span></div>
+        <span class="why">Safe carrying in the zones. Short timer so it isn't too strong.</span>
+      </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
+
+      <div class="card" data-id="Sprint" style="--c:#ffd23a"><div class="icon">👟</div><div class="body">
+        <div class="name">Sprint</div>
+        <div class="desc">+50% walk speed.</div>
+        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">COINS</span></div>
+      </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
+
+      <div class="card" data-id="Extra Hands" style="--c:#ff7ad0"><div class="icon">🙌</div><div class="body">
+        <div class="name">Extra Hands</div>
+        <div class="desc">+1 carry slot.</div>
+        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+        <span class="why">A temporary taste of the +1 Pickup gamepass.</span>
+      </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
+
+      <div class="card" data-id="Egg Rain" style="--c:#6cc04a"><div class="icon">🥚</div><div class="body">
+        <div class="name">Egg Rain</div>
+        <div class="desc">More eggs spawn in the zones you shoot at.</div>
+        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+      </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
+
+      <div class="card" data-id="Big Eggs" style="--c:#ff9f1c"><div class="icon">🥚</div><div class="body">
+        <div class="name">Big Eggs</div>
+        <div class="desc">Higher chance of Huge and Massive eggs spawning.</div>
+        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+      </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
+
+      <div class="card" data-id="Shard Rush" style="--c:#9b3bff"><div class="icon">💎</div><div class="body">
+        <div class="name">Shard Rush</div>
+        <div class="desc">2x enchant shards.</div>
+        <div class="meta"><span class="pill dur">15 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+      </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
+
+      <div class="card" data-id="Quick Enchant" style="--c:#c27aff"><div class="icon">⏩</div><div class="body">
+        <div class="name">Quick Enchant</div>
+        <div class="desc">Enchant timers run 2x faster.</div>
+        <div class="meta"><span class="pill dur">30 MIN</span><span class="pill src">SHOP / DROPS</span></div>
+      </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
+
+      <div class="card" data-id="Magnet" style="--c:#ff4d4d"><div class="icon">🧲</div><div class="body">
+        <div class="name">Magnet</div>
+        <div class="desc">Loose animals near you slide toward you, so they're easier to grab.</div>
+        <div class="meta"><span class="pill dur">10 MIN</span><span class="pill src">COINS</span></div>
+      </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
+
+      <div class="card" data-id="Server Luck" style="--c:#ffd23a"><div class="icon">🌟</div><div class="body">
+        <div class="name">Server Luck</div>
+        <div class="desc">Lucky + Mutation Luck for EVERYONE in the server, with a big announcement banner.</div>
+        <div class="meta"><span class="pill dur">30 MIN</span><span class="pill rbx">ROBUX</span></div>
+        <span class="why">Very popular in this genre: brings players together and people buy it to show off.</span>
+      </div><div class="btns"><button class="acc">ACCEPT</button><button class="den">DENY</button></div><span class="stamp"></span></div>
+    </div>
+  </div>
+
+  <div class="board rules">
+    <h2>HOW THEY'D WORK</h2>
+    <div class="note"><b>Stacking:</b> drinking the same potion again adds more time (or charges). Different potions all work at the same time.</div>
+    <div class="note"><b>Timers</b> only count down while you're online, so nobody wastes a potion by leaving.</div>
+    <div class="note"><b>HUD:</b> a row of small potion icons with countdowns above the hotbar.</div>
+    <div class="note"><b>Where to get them:</b> Robux shop, Index rewards, Group rewards, a rare drop from breaking eggs, and a coin shop for the weaker ones.</div>
+    <div class="note"><b>Durations and sources</b> on each card are my suggestions. Tell me any you want changed.</div>
+  </div>
+</div>
+<script>
+  const KEY = 'golphPotionPicksV1';
+  const cards = [...document.querySelectorAll('.card[data-id]')];
+  let state = JSON.parse(localStorage.getItem(KEY) || '{}');
+  function refresh() {
+    let a = 0, d = 0;
+    cards.forEach(c => {
+      const v = state[c.dataset.id];
+      c.classList.toggle('accepted', v === 'accept');
+      c.classList.toggle('denied', v === 'deny');
+      c.querySelector('.stamp').textContent = v === 'accept' ? 'ACCEPTED' : v === 'deny' ? 'DENIED' : '';
+      if (v === 'accept') a++; else if (v === 'deny') d++;
+    });
+    document.getElementById('nacc').textContent = a + ' ACCEPTED';
+    document.getElementById('nden').textContent = d + ' DENIED';
+    document.getElementById('nleft').textContent = (cards.length - a - d) + ' LEFT';
+    localStorage.setItem(KEY, JSON.stringify(state));
+  }
+  cards.forEach(c => {
+    c.querySelector('.acc').addEventListener('click', () => { state[c.dataset.id] = state[c.dataset.id] === 'accept' ? undefined : 'accept'; refresh(); });
+    c.querySelector('.den').addEventListener('click', () => { state[c.dataset.id] = state[c.dataset.id] === 'deny' ? undefined : 'deny'; refresh(); });
+  });
+  document.getElementById('clear').onclick = () => { state = {}; refresh(); };
+  document.getElementById('copy').onclick = async () => {
+    const acc = cards.filter(c => state[c.dataset.id] === 'accept').map(c => c.dataset.id);
+    const den = cards.filter(c => state[c.dataset.id] === 'deny').map(c => c.dataset.id);
+    const left = cards.filter(c => !state[c.dataset.id]).map(c => c.dataset.id);
+    const text = 'My potion picks:\nACCEPTED: ' + (acc.join(', ') || 'none') + '\nDENIED: ' + (den.join(', ') || 'none') + (left.length ? '\nUNDECIDED: ' + left.join(', ') : '');
+    try { await navigator.clipboard.writeText(text); } catch (e) {
+      const t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove();
+    }
+    const b = document.getElementById('copy'); b.textContent = 'COPIED!'; setTimeout(() => b.textContent = 'COPY MY PICKS', 1200);
+  };
+  refresh();
+</script>
+</body>
+</html>
